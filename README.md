@@ -2,12 +2,12 @@
 dotfiles
 ========
 
-A collection of configuration files (and some other worth keeping stuff) that I use in my systems, managed with `[stow](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)`.
+A collection of configuration files (and some other worth keeping stuff) that I use in my systems, managed with [stow](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html).
 
-But it's unusual
-----------------
+It's unusual
+------------
 
-It differs from other repositories by the way I target `stow` to `/` instead of `~` using a global `~/.stowrc`:
+It differs from other repositories through the way I target `stow` to `/` instead of `~` using a global `~/.stowrc`:
 
 ```
 $ cat ~/.stowrc
@@ -45,7 +45,7 @@ home/
 Adding files
 ------------
 
-I also developed `[stow-to](https://gist.github.com/jvmcarneiro/1d4349b1ee769ccff3f81be7b4a37c70)`, a script that automatically moves a given file from anywhere to the `~/dotfiles` directory (it must be named like that) while maintaining correct folder hierarchy. It also stows it after.
+I also developed [stow-to](https://gist.github.com/jvmcarneiro/1d4349b1ee769ccff3f81be7b4a37c70), a script that automatically moves a given file from anywhere to the `~/dotfiles` directory (it must be named like that) while maintaining correct folder hierarchy. It also stows it after.
 
 ### For example:
 
@@ -79,3 +79,7 @@ home/
 ```
 
 And `$ stow xorg` would generate the correct symlinks in `/etc/X11`, if `stow-to` hadn't already done so.
+
+---
+
+Feel free to do whatever with it all :)
