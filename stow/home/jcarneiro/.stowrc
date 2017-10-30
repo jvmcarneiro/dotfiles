@@ -1,0 +1,7 @@
+--dir=/home/jcarneiro/dotfiles
+--target=/
+--ignore=.+~
+--ignore=\.git
+--ignore=\.gitignore
+--ignore=^/README.*
+--ignore=^/LICENSE.*
