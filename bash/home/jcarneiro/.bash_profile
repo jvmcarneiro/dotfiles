@@ -21,7 +21,6 @@ PS1="\$(/usr/local/rvm/bin/rvm-prompt) $PS1"
 
 # RVM bash completion
 [[ -r /usr/local/rvm/scripts/completion ]] && . /usr/local/rvm/scripts/completion
-
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc

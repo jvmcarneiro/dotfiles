@@ -6,3 +6,5 @@ report.in.columns     = id,description
 report.in.description = Inbox
 report.in.filter      = status:pending limit:page (+in)
 report.in.labels      = ID,Description
+
+include /usr/share/doc/task/rc/solarized-light-256.theme
