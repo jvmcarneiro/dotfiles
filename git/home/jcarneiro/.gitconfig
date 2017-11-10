@@ -1,5 +1,11 @@
 [user]
-	name = Joao Carneiro
 	email = jvmcarneiro@gmail.com
+	name = Joao Carneiro
+[core]
+	editor = vim
 [credential]
-	helper = cache --timeout=3600
+	helper = store
+[alias]
+	hist = !vim -c ":GV"
+[color]
+	pager = false

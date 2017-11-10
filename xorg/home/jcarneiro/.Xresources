@@ -1,0 +1,88 @@
+! Base16 Monokai
+! Scheme: Wimer Hazenberg (http://www.monokai.nl)
+
+#define base00 #1B1D1E
+#define base01 #383830
+#define base02 #49483e
+#define base03 #75715e
+#define base04 #a59f85
+#define base05 #f8f8f2
+#define base06 #f5f4f1
+#define base07 #FFFFFF
+#define base08 #f92672
+#define base09 #fd971f
+#define base0A #f4bf75
+#define base0B #a6e22e
+#define base0C #a1efe4
+#define base0D #66d9ef
+#define base0E #ae81ff
+#define base0F #cc6633
+
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06
+
+! Allow for ctrl+shift+c/v to copy/paste on xterm
+*VT100.Translations : #override \
+Ctrl Shift <Key>V        : insert-selection(CLIPBOARD) \n\
+Ctrl Shift <Key>C        : copy-selection(CLIPBOARD)
+
+! Fonts
+*font        : -misc-tamsyn-medium-r-normal--14-*-*-*-*-*-*-*
+
+
+
+! URxvt specific options
+
+! vim-scrollback extension
+URxvt.perl-ext-common: vim-scrollback,resize-font
+URxvt.perl-lib: /home/jcarneiro/.urxvt/urxvt-vim-scrollback/
+URxvt.vim-scrollback: C-i
+URxvt.vim-scrollback-paste: C-p
+
+! Scrollback buffer
+URxvt.saveLines : 50000
+
+! Scrolls the pager, not the buffer, on a secondary screen
+URxvt.secondaryScreen : 1
+URxvt.secondaryScroll : 0
+URxvt.secondaryWheel  : 1
+
+! Disable scrollbar
+URxvt.scrollBar        : false
+
+! Do not scroll with output
+URxvt.scrollTtyOutput  : false
+
+! Scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt.scrollWithBuffer : true
+
+! Scroll back to the bottom on keypress
+URxvt.scrollTtyKeypress: true
