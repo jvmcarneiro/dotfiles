@@ -1,0 +1,19 @@
+elementary Icon Theme for Claws Mail
+Version 2.1
+
+
+History:
+
+Version 3.0: update icons from elementary upstream
+
+Version 2.1: new folder-icons from elementary upstream, reworked trash-icon, added new compose-logo icon (since claws 3.9.2)
+
+Version 2.0: complete overhaul of most icons (new *_mark icons, new trash icon, add 128px application icon (claws_mail_icon), new addressbook, new in- and outbox, new unread/new-icons, new properties icon, new paste-icon, etc)
+
+Version 1.2: making theme coherent with elementary 3.x (reply, forward), new inbox, outbox and drafts icons, new concept for hidden and marked folders
+
+Version 1.1: polishing of some icons (trash_btn, mail_send_queue), additional trayicons for dark panels
+
+Version 1.0: major overhaul of most icons, many recreated, others cleaned up. the theme seems quite finished and consistent.
+
+Version 0.9: initial release. almost finished, some icons still use my (fallback) theme "gnome-brave".

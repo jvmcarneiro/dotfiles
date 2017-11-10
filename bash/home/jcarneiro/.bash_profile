@@ -2,12 +2,14 @@
 # ~/.bash_profile
 #
 
+# Global variables
 export EDITOR="vim"
 export BROWSER="firefox-nightly"
 export XKB_DEFAULT_LAYOUT="us"
 export XKB_DEFAULT_VARIANT="altgr-intl"
+export QT_QPA_PLATFORMTHEME="gtk2"
 
-
+# Path configurations
 export PATH="$HOME/bin:${PATH}"
 
 # Ruby configuration
@@ -21,6 +23,8 @@ PS1="\$(/usr/local/rvm/bin/rvm-prompt) $PS1"
 
 # RVM bash completion
 [[ -r /usr/local/rvm/scripts/completion ]] && . /usr/local/rvm/scripts/completion
+
+# Sourcing RVM scripts
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc

@@ -235,6 +235,7 @@ let g:calendar_task            = 1
 
 "" Markdown & pandoc configurations
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd FileType vimwiki set filetype=pandoc
 
 "" Wiki behavior
 let wiki_default = {}

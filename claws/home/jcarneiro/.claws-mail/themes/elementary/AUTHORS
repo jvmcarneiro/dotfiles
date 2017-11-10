@@ -1,0 +1,34 @@
+####################
+ABOUT:             #
+####################
+
+This theme was ported from "elementary" to Claws-Mail by Simon Steinbeiss <simon@xfce.org>.
+Some icons were taken directly from the original (version 2.5 and bzr), some were modified, others reworked (e.g. *_hrm.png) and a few more were created from scratch.
+
+elementary is developed by Daniel Foré <Daniel.p.Fore@gmail.com>, so credit goes to him.
+
+elementary is licensed under GPL2 and so is this package.
+
+
+
+####################
+LICENSE            #
+####################
+
+elementary is designed and developed by Daniel Foré <Daniel.p.Fore@gmail.com>
+
+GNOME icons, Humanity icons, and elementary icons are all licensed under the GPL.
+
+This package is licensed under GNU General Public License version 2.
+
+Icons based on GNOME and other GNOME projects are licensed GPL.
+	You can visit the GNOME website here:
+		http://www.gnome.org/
+
+Icons based on Tango sources or taken from the Tango project are public domain.
+	You can visit the Tango project website here:
+		http://tango.freedesktop.org/Tango_Desktop_Project
+
+Icons based on Humanity sources or taken from the elementary project are licensed GPL.
+	You can visit the Humanity website here:
+		http://launchpad.net/humanity
