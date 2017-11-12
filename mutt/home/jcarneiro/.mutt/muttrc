@@ -4,6 +4,7 @@
 
 source ~/.mutt/sidebar
 source ~/.mutt/vim
+source ~/.mutt/pgp
 
 # caches
 set header_cache="~/.cache/mutt"

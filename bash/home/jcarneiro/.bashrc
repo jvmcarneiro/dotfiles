@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+source "$HOME/.shell_task"
+
 # Aliases
 ## Launches pager defined above
 alias less="${PAGER}"
@@ -24,17 +26,6 @@ alias hybrid='sudo systemctl hybrid-sleep'
 alias hybrid='sudo systemctl hybrid-sleep'
 ## Neomutt ease of use
 alias mutt='neomutt'
-
-# Taskwarrior stuff
-## Add to inbox
-alias in='task add +in'
-## Add to tickle folder
-tickle () {
-	deadline=$1
-	shift
-	in +tickle wait:$deadline $@
-}
-alias tick=tickle
 
 # Set prompt
 PS1='[\u@\h \W]\$ '

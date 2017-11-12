@@ -226,13 +226,6 @@ augroup autocorrect
   autocmd FileType vimwiki call AutoCorrect()
 augroup END
 
-"" Calendar sync options
-let g:calendar_google_calendar = 1
-let g:calendar_google_task     = 1
-let g:calendar_views           = ['year', 'month', 'week', 'day_4', 'day', 'clock', 'event', 'agenda']
-let g:calendar_cyclic_view     = 1
-let g:calendar_task            = 1
-
 "" Markdown & pandoc configurations
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd FileType vimwiki set filetype=pandoc
@@ -339,8 +332,8 @@ Plug 'chrisbra/Colorizer'
 Plug 'NLKNguyen/papercolor-theme'
 "" restore_view.vim: saves folds and cursor position
 Plug 'vim-scripts/restore_view.vim'
-"" vim-calendar: calendar integration
-Plug 'itchyny/calendar.vim'
+"" calendar.vim: calendar integration
+Plug 'vim-scripts/calendar.vim--Matsumoto'
 "" vimwiki: personal outline organization
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 "" vim-online-thesaurus: online synonym finder
