@@ -88,7 +88,8 @@ Feel free to do whatever with it all :)
 
 * Move the three .pem keys to `~/.task/`;
 * `:PlugInstall` in vim;
+* Install `qt5-styleplugins`;
 * Install `ttf-roboto`, `ttf-roboto-mono` and `ttf-roboto-slab` from aur;
 * Install `numix-icon-theme-git` and `gtk-theme-numix-solarized-git` from the aur;
 * Import pass' gpg keys;
-* Generate and send pub ssh key to server;
+* Generate and send pub ssh key to server.
