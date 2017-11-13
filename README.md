@@ -86,10 +86,16 @@ Feel free to do whatever with it all :)
 
 ### Personal to-dos when installing (for reference)
 
+* Symlink `.stowrc` to `$HOME`;
 * Move the three .pem keys to `~/.task/`;
 * `:PlugInstall` in vim;
 * Install `qt5-styleplugins`;
 * Install `ttf-roboto`, `ttf-roboto-mono` and `ttf-roboto-slab` from aur;
 * Install `numix-icon-theme-git` and `gtk-theme-numix-solarized-git` from the aur;
 * Import pass' gpg keys;
+<<<<<<< HEAD
 * Generate and send pub ssh key to server.
+=======
+* Generate and send pub ssh key to server;
+* Create symlinks from dropbox synced files.
+>>>>>>> 1bedb8a8d122407a8c82a65e956040271c218d15

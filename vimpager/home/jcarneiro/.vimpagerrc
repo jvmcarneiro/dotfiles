@@ -43,7 +43,6 @@ set guifont="Inconsolata-g"
 
 " Options
 set nocompatible      " Disables vi compatibility-mode
-set number            " Show line numbers
 set showcmd           " Shows input before it is completed
 set wildmenu          " Status line shows possible completions
 set noerrorbells      " Turns off bell
@@ -57,7 +56,6 @@ set incsearch         " Searches befores input is completed
 set backspace=2       " Moves cursors through identation and eol
 set shortmess=at      " Shortens all messages
 set whichwrap=<,>,h,l " Commands that can jump to next line when eol
-set laststatus=2      " Always shows status line
 set diffopt=vertical  " Vimdiff will open windows with vertical split
 set title             " Show current file title
 set conceallevel=2    " Enable syntax concealing
@@ -226,6 +224,13 @@ augroup autocorrect
   autocmd FileType vimwiki call AutoCorrect()
 augroup END
 
+"" Calendar sync options
+let g:calendar_google_calendar = 1
+let g:calendar_google_task     = 1
+let g:calendar_views           = ['year', 'month', 'week', 'day_4', 'day', 'clock', 'event', 'agenda']
+let g:calendar_cyclic_view     = 1
+let g:calendar_task            = 1
+
 "" Markdown & pandoc configurations
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd FileType vimwiki set filetype=pandoc
@@ -332,8 +337,8 @@ Plug 'chrisbra/Colorizer'
 Plug 'NLKNguyen/papercolor-theme'
 "" restore_view.vim: saves folds and cursor position
 Plug 'vim-scripts/restore_view.vim'
-"" calendar.vim: calendar integration
-Plug 'vim-scripts/calendar.vim--Matsumoto'
+"" vim-calendar: calendar integration
+Plug 'itchyny/calendar.vim'
 "" vimwiki: personal outline organization
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 "" vim-online-thesaurus: online synonym finder

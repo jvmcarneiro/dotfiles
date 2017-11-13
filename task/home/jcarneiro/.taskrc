@@ -1,11 +1,40 @@
 # Files
 data.location=~/.task
 
+# Contexts
+context.nape=+@ruby
+context.ufba=+@netbook or +@internet or +@paper or +@phone
+context.home=+@home or +@notebook or +@netbook or +@internet or +@paper
+context.street=+@phone
+context.travel=+@phone -@internet
+
 # Inbox report
 report.in.columns     = id,description
 report.in.description = Inbox
 report.in.filter      = status:pending limit:page (+in)
 report.in.labels      = ID,Description
+
+# Reference report
+report.reference.columns     = id,tags,description.combined
+report.reference.description = Reference
+report.reference.filter      = status:pending (+reference)
+report.reference.labels      = ID,Tag,Description
+
+# Next report
+report.next.description = Most urgent tasks
+report.next.columns = id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.combined,brainpower,estimate
+report.next.filter = status:pending and +next
+report.next.labels = ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,B,Estim
+report.next.sort = brainpower+,priority-,urgency-,estimate+
+
+# Brainpower attribute
+uda.brainpower.type=string
+uda.brainpower.label=Brainpower
+uda.brainpower.values=H,M,L
+
+# Time estimate attribute
+uda.estimate.type=duration
+uda.estimate.label=Estimate
 
 # Inthe.AM server files
 taskd.certificate=~/.task/private.certificate.pem
