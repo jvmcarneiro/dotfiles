@@ -47,6 +47,8 @@ Adding files
 
 I also developed [stow-to](https://gist.github.com/jvmcarneiro/1d4349b1ee769ccff3f81be7b4a37c70), a script that automatically moves a given file from anywhere to the `~/dotfiles` directory (it must be named like that) while maintaining correct folder hierarchy. It also stows it after.
 
+To maintain same behavior when using sudo, do include `HOME` in env_keep in sudoers to avoid resetting it.
+
 ### For example:
 
 Saving your `Xorg` configs in `/etc` to your dotfiles is as simple as: 
@@ -87,15 +89,12 @@ Feel free to do whatever with it all :)
 ### Personal to-dos when installing (for reference)
 
 * Symlink `.stowrc` to `$HOME`;
+* Include `HOME` in env_keep in sudoers;
 * Move the three .pem keys to `~/.task/`;
 * `:PlugInstall` in vim;
 * Install `qt5-styleplugins`;
 * Install `ttf-roboto`, `ttf-roboto-mono` and `ttf-roboto-slab` from aur;
 * Install `numix-icon-theme-git` and `gtk-theme-numix-solarized-git` from the aur;
 * Import pass' gpg keys;
-<<<<<<< HEAD
-* Generate and send pub ssh key to server.
-=======
 * Generate and send pub ssh key to server;
 * Create symlinks from dropbox synced files.
->>>>>>> 1bedb8a8d122407a8c82a65e956040271c218d15

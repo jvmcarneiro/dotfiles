@@ -29,13 +29,6 @@ someday () {
     task $id modify -in modify +someday wait:someday $@
 }
 
-## Task should go to trash
-trash () {
-    id=$1
-    shift
-    task $id delete
-}
-
 ## Task should be referenced
 reference (){
     id=$1

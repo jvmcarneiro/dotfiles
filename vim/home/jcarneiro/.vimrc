@@ -62,6 +62,10 @@ set diffopt=vertical  " Vimdiff will open windows with vertical split
 set title             " Show current file title
 set conceallevel=2    " Enable syntax concealing
 
+" Change leaders
+let mapleader=','
+let maplocalleader=','
+
 " Mappings and functionalities
 "" Ctrl-L erases the last search buffer
 if maparg('<C-L>', 'n') ==# ''
@@ -206,24 +210,17 @@ let g:SuperTabDefaultCompletionType = 'context'
 nmap <C-t> :TagbarToggle<CR>
 
 "" Default pdf viewer for vimtex
+let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 
 "" Activate spell check on some filetypes
+let g:lexical#spelllang = ['en_us','pt_br']
 augroup lexical
   autocmd!
   autocmd FileType markdown,mkd call lexical#init()
   autocmd FileType textile call lexical#init()
   autocmd FileType text call lexical#init()
   autocmd FileType vimwiki call lexical#init()
-augroup END
-
-"" Activate autocorrect on some filetypes
-augroup autocorrect
-  autocmd!
-  autocmd FileType markdown,mkd call AutoCorrect()
-  autocmd FileType textile call AutoCorrect()
-  autocmd FileType text call AutoCorrect()
-  autocmd FileType vimwiki call AutoCorrect()
 augroup END
 
 "" Markdown & pandoc configurations
@@ -322,8 +319,6 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'airblade/vim-gitgutter'
 "" vim-lexical: spell-check and thesaurus
 Plug 'reedes/vim-lexical'
-"" vim-autocorrect: autocorrect
-Plug 'panozzaj/vim-autocorrect'
 "" vim-wheel: wheel moviment
 Plug 'reedes/vim-wheel'
 "" Colorizer: color visualizer
