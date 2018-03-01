@@ -64,11 +64,7 @@ fi
 # Main monitor by default
 mons -o
 
-# Leave dropbox daemon open
 dropbox &
-
-# Notification daemon
 dunst &
 
-# Start wm
 exec i3

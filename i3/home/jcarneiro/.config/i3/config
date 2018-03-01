@@ -3,10 +3,39 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font Inconsolata 14
+font Roboto Mono 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Border and titlebar
+new_window pixel 1
+new_float pixel 1
+client.focused #859900 #859900 #fdf6e3 #859900
+client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #586e75
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+
+# Gaps
+gaps inner 10
+bindsym $mod+bracketleft gaps inner current minus 1
+bindsym $mod+bracketright gaps inner current plus 1
+bindsym $mod+Shift+bracketleft gaps outer current minus 1
+bindsym $mod+Shift+bracketright gaps outer current plus 1
+
+# Background
+exec_always --no-startup-id feh --bg-center "/home/jcarneiro/Pictures/orange-tree.jpg"
+exec_always --no-startup-id dropbox
+exec_always --no-startup-id dunst
+
+# Toggle bar
+bindsym $mod+g exec i3-msg bar mode hide
+bindsym $mod+Shift+g exec i3-msg bar mode dock
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
 # start a terminal
 bindsym $mod+Return exec "termite -e 'bash --login'"
@@ -15,7 +44,7 @@ bindsym $mod+Return exec "termite -e 'bash --login'"
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
 
 # change focus
 bindsym $mod+j focus down
@@ -102,7 +131,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -130,8 +159,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Send signals to i3blocks
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+  status_command i3blocks
+  position top
+  font pango:Misc Tamsyn, FontAwesome 11
+  tray_output primary
 }

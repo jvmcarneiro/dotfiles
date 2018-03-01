@@ -7,7 +7,7 @@ A collection of configuration files (and some other worth keeping stuff) that I 
 It's unusual
 ------------
 
-It differs from other repositories through the way I target `stow` to `/` instead of `~` using a global `~/.stowrc`:
+It differs from other repositories by the way I target `stow` to `/` instead of `~` using a global `~/.stowrc`:
 
 ```
 $ cat ~/.stowrc
@@ -51,7 +51,7 @@ To maintain same behavior when using sudo, do include `HOME` in env_keep in sudo
 
 ### For example:
 
-Saving your `Xorg` configs in `/etc` to your dotfiles is as simple as: 
+Saving your `Xorg` configs in `/etc` to your dotfiles is as simple as:
 
 ```
 $ cd /etc

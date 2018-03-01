@@ -30,6 +30,10 @@ unset imap_passive
 # default type when creating new folders
 set mbox_type=Maildir
 
+# mime handling
+auto_view text/html application/* image/*
+alternative_order text/plain text image/*
+
 # CAECOMP account options
 source "~/.mutt/caecomp"
 folder-hook $folder 'source ~/.mutt/caecomp'

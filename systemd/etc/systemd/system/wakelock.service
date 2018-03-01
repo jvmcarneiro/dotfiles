@@ -1,0 +1,14 @@
+# file /etc/systemd/system/wakelock.service
+
+[Unit]
+Description=Lock the screen on resume from suspend
+
+[Service]
+User=jcarneiro
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/home/jcarneiro/bin/lock
+
+[Install]
+WantedBy=sleep.target
+WantedBy=suspend.target

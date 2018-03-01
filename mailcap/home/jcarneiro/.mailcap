@@ -1,0 +1,4 @@
+text/html; elinks -dump %s; copiousoutput; nametemplate=%s.html
+image/*; anytopnm %s | pnmscale -xsize 80 -ysize 50 | ppmtopgm | pgmtopbm | pbmtoascii ; copiousoutput
+application/*; xdg-open %s
+video/*; xdg-open %s

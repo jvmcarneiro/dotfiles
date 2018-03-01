@@ -1,9 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -14,19 +8,39 @@ set $down j
 set $up k
 set $right l
 # Terminal emulator
-set $term termite
+set $term termite -e 'bash --login'
 # Aplication launcher
-set $menu j4-dmenu-desktop --dmenu="dmenu -i -l 20"
+set $menu dmenu_run -f -l 10 -fn "Roboto Mono-10"
 # Brightness down
 set $brightdown brightnessctl s 10%-
 # Brightness up
 set $brightup brightnessctl s +10%
 
-### Output configuration
+### Autostart
 #
-# Default wallpaper (more resolutions are available in /usr/share/sway/)
-output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output LVDS-1 scale 1
+#exec_always dunst
+
+### Output configuration
+output * bg "/home/jcarneiro/Pictures/orange-tree.jpg" center
+
+### Send signal to i3blocks when CAPS is pressed
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+
+### Views
+default_border pixel 1
+default_floating_border pixel 1
+client.focused #859900 #859900 #fdf6e3 #859900
+client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #586e75
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+
+### Gaps
+gaps inner 10
+gaps outer 20
+bindsym $mod+bracketleft gaps inner current minus 10
+bindsym $mod+bracketright gaps inner current plus 10
+bindsym $mod+Shift+bracketleft gaps outer current minus 10
+bindsym $mod+Shift+bracketright gaps outer current plus 10
 
 ### Input configuration
 input "2:7:SynPS/2_Synaptics_TouchPad" {
@@ -42,9 +56,6 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     scroll_method two_finger
     tap enabled
 }
-
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
@@ -195,15 +206,12 @@ bindsym $mod+r mode "resize"
 #
 bar {
     position top
-    status_command i3status
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    font Roboto Mono 10
+    status_command i3blocks
+    tray_output primary
 }
 
 # Font:
-font Open Sans Semibold 10
+font Roboto 10
 
 include /etc/sway/config.d/*
