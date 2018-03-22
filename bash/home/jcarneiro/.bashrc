@@ -5,7 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source "$HOME/.shell_task"
+# If .shell_task script is present, source it
+[[ -f ~/.shell_task ]] && . ~/.shell_task
 
 # Aliases
 ## Launches pager defined above
@@ -31,12 +32,3 @@ alias mutt='neomutt'
 PS1='[\u@\h \W]\$ '
 ## Show number of inbox items in terminal prompt
 export PS1='[$(task +in +PENDING count)]'$PS1
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:/usr/local/rvm/bin"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Quartus auto-configured this
-export QSYS_ROOTDIR="/home/jcarneiro/intelFPGA_lite/16.1/quartus/sopc_builder/bin"
