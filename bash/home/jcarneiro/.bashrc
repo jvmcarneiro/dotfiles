@@ -24,9 +24,13 @@ alias fixscreen="xrandr -s 1 && xrandr -s 0"
 ## Hybrid suspend
 alias hybrid='sudo systemctl hybrid-sleep'
 ## Normal suspend
-alias hybrid='sudo systemctl hybrid-sleep'
+alias suspend='sudo systemctl suspend'
 ## Neomutt ease of use
 alias mutt='neomutt'
+## Terminal emacs
+alias emacst='emacsclient -t'
+## Visual client emacs
+alias emacsc='emacsclient -c'
 
 # Set prompt
 PS1='[\u@\h \W]\$ '

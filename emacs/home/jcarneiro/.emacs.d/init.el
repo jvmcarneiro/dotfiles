@@ -175,6 +175,11 @@
 (use-package dim
   :ensure t)
 
+(use-package elpy
+  :ensure t
+  :config
+  (elpy-enable))
+
 (use-package evil
   :ensure t
   :config
