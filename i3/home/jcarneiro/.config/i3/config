@@ -19,7 +19,7 @@ client.urgent #cb4b16 #cb4b16 #cb4b16 #cb4b16 #cb4b16
 client.background #fdf6e3
 
 # Background
-exec_always --no-startup-id feh --bg-center "/home/jcarneiro/Pictures/orange-tree.jpg"
+exec_always --no-startup-id feh --bg-fill "/home/jcarneiro/Pictures/wallpaper.jpg"
 exec_always --no-startup-id dropbox
 exec_always --no-startup-id dunst
 exec_always --no-startup-id udiskie -t2
