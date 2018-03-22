@@ -1,7 +1,3 @@
-search for:
-flycheck checkers
-
-pip:
 jedi
 flake8
 flake8-docstrings

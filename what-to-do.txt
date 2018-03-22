@@ -1,0 +1,9 @@
+1. Install dependencies
+2. Stow everything (create folders as needed)
+3. Install use-package
+4.
+
+note:
+search flycheck checkers
+upload firefox config
+upload tdm config
