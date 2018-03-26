@@ -29,7 +29,7 @@ GetOptions("help|h" => \&help,
            "w=i"    => \$t_warn,
            "c=i"    => \$t_crit,
            "d=i"    => \$decimals,
-);
+    );
 
 # Get CPU usage
 $ENV{LC_ALL}="en_US"; # if mpstat is not run under en_US locale, things may break, so make sure it is
@@ -45,15 +45,14 @@ close(MPSTAT);
 $cpu_usage eq -1 and die 'Can\'t find CPU information';
 
 # Print short_text, full_text
-printf "%.${decimals}f%%\n", $cpu_usage;
-printf "%.${decimals}f%%\n", $cpu_usage;
+printf "%.${decimals}f\n", $cpu_usage;
+printf "%.${decimals}f\n", $cpu_usage;
 
 # Print color, if needed
 if ($cpu_usage >= $t_crit) {
-    print "#FF0000\n";
-    exit 33;
+    print "#dc322f\n";
 } elsif ($cpu_usage >= $t_warn) {
-    print "#FFFC00\n";
+    print "#b58900\n";
 }
 
 exit 0;

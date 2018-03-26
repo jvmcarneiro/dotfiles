@@ -419,40 +419,28 @@ window and close the *TeX help* buffer."
   (add-to-ordered-list 'flycheck-checkers 'markdown-markdownlint-cli 0)
   (setq flycheck-markdown-markdownlint-cli-config ".markdownlintrc"))
 
-(use-package fontawesome
-  :ensure t)
-
-(use-package git-gutter+
+(use-package flycheck-color-mode-line
   :ensure t
   :config
-  (global-git-gutter+-mode t)
-  (fringe-mode 0)
-  (setq git-gutter+-window-width 1)
-  (setq git-gutter+-unchanged-sign " ")
-  (setq git-gutter+-modified-sign " ")
-  (setq git-gutter+-added-sign " ")
-  (setq git-gutter+-deleted-sign " ")
-  (evil-leader/set-key "gn" 'git-gutter+-next-hunk)
-  (evil-leader/set-key "gp" 'git-gutter+-previous-hunk)
-  (evil-leader/set-key "gt" 'git-gutter+-stage-hunk)
-  (evil-leader/set-key "gr" 'git-gutter+-revert-hunk)
-  (evil-leader/set-key "gs" 'git-gutter+-show-hunk)
-  (defun my-frame-behaviours-gg (&optional frame)
-    "Make FRAME and/or terminal local change for git-gutter."
-    (with-selected-frame (or frame (selected-frame))
-      (unless (display-graphic-p frame)
-	(set-face-background 'git-gutter+-unchanged "white")
-	(set-face-background 'git-gutter+-modified "brightcyan")
-	(set-face-background 'git-gutter+-added "blue")
-	(set-face-background 'git-gutter+-deleted "brightred"))
-      (when (display-graphic-p frame)
-	(set-face-background 'git-gutter+-unchanged "#eee8d5")
-	(set-face-background 'git-gutter+-modified "#93a1a1")
-	(set-face-background 'git-gutter+-added "#268bd2")
-	(set-face-background 'git-gutter+-deleted "#cb4b16"))))
-  (declare-function my-frame-behaviours-gg init.el)
-  (my-frame-behaviours-gg)
-  (add-hook 'after-make-frame-functions 'my-frame-behaviours-gg))
+  (eval-after-load "flycheck"
+    '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+  (set-face-attribute 'flycheck-color-mode-line-error-face nil
+		      :foreground "#dc322f"
+		      :background "#fdf6e3")
+  (set-face-attribute 'flycheck-color-mode-line-warning-face nil
+		      :foreground "#b58900"
+		      :background "#fdf6e3")
+  (set-face-attribute 'flycheck-color-mode-line-info-face nil
+		      :foreground "#6c71c4"
+		      :background "#fdf6e3")
+  (set-face-attribute 'flycheck-color-mode-line-success-face nil
+		      :foreground "#2aa198"
+		      :background "#fdf6e3")
+  (set-face-attribute 'flycheck-color-mode-line-running-face nil
+		      :inherit nil))
+
+(use-package fontawesome
+  :ensure t)
 
 (use-package ivy
   :ensure t)
@@ -590,8 +578,10 @@ window and close the *TeX help* buffer."
 		  'neotree-hidden-file-toggle)
 		(define-key evil-normal-state-local-map (kbd "z")
 		  'neotree-stretch-toggle)
-		(define-key evil-normal-state-local-map (kbd "R")
+		(define-key evil-normal-state-local-map (kbd "r")
 		  'neotree-refresh)
+		(define-key evil-normal-state-local-map (kbd "R")
+		  'neotree-change-root)
 		(define-key evil-normal-state-local-map (kbd "m")
 		  'neotree-rename-node)
 		(define-key evil-normal-state-local-map (kbd "c")
@@ -639,7 +629,7 @@ window and close the *TeX help* buffer."
                   (face1 (if active 'powerline-active1 'powerline-inactive1))
                   (face2 (if active 'powerline-active2 'powerline-inactive2))
                   (separator-left (intern (format "powerline-%s-%s"
-                                    (setq powerline-current-separator 'nil)
+						  (setq powerline-current-separator 'nil)
                                     (car powerline-default-separator-dir))))
                   (separator-right (intern (format "powerline-%s-%s"
                                      (setq powerline-current-separator 'nil)

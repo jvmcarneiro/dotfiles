@@ -12,7 +12,7 @@ status = check_output(['acpi'], universal_newlines=True)
 
 if not status:
     # stands for no battery found
-    fulltext = "<span color='red'><span font='FontAwesome'>\uf00d \uf240</span></span>"
+    fulltext = "<span color='#dc322f'><span font='FontAwesome'>\uf00d \uf240</span></span>"
     percentleft = 100
 else:
     # if there is more than one battery in one laptop, the percentage left is
@@ -49,7 +49,7 @@ else:
         percentleft = 0
 
     # stands for charging
-    FA_LIGHTNING = "<span color='yellow'><span font='FontAwesome'>\uf0e7</span></span>"
+    FA_LIGHTNING = "<span font='FontAwesome'>\uf0e7</span>"
 
     # stands for plugged in
     FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
@@ -74,25 +74,24 @@ else:
 
     def color(percent):
         if percent < 10:
-            # exit code 33 will turn background red
-            return "#FFFFFF"
+            return "#d33682"
         if percent < 20:
-            return "#FF3300"
+            return "#dc322f"
         if percent < 30:
-            return "#FF6600"
+            return "#cb4b16"
         if percent < 40:
-            return "#FF9900"
+            return "#b58900"
         if percent < 50:
-            return "#FFCC00"
+            return "#859900"
         if percent < 60:
-            return "#FFFF00"
+            return "#93a1a1"
         if percent < 70:
-            return "#FFFF33"
+            return "#839496"
         if percent < 80:
-            return "#FFFF66"
-        return "#FFFFFF"
+            return "#657b83"
+        return "#586e75"
 
-    form =  '<span color="{}">{}%</span>'
+    form =  '<span color="{}">{}</span>'
     fulltext += form.format(color(percentleft), percentleft)
 
 print(fulltext)

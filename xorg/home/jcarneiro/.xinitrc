@@ -61,10 +61,4 @@ elif (( "$charge" <= 18 && "$charge" >= 0 )); then
 	fi
 fi
 
-# Main monitor by default
-mons -o
-
-dropbox &
-dunst &
-
-exec i3
+exec tdm --xstart

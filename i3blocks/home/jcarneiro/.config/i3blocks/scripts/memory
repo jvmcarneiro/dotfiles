@@ -55,15 +55,15 @@ END {
 	#printf("%.1f/%.1fG\n", used, total)
 
 	# short text
-	printf("%.f%%\n", pct)
+	printf("%.f\n", pct)
 
 	# color
 	if (pct > 90) {
-		print("#FF0000\n")
+		print("#dc322f\n")
 	} else if (pct > 80) {
-		print("#FFAE00\n")
+		print("#cb4b16\n")
 	} else if (pct > 70) {
-		print("#FFF600\n")
+		print("#b58900\n")
 	}
 }
 ' /proc/meminfo

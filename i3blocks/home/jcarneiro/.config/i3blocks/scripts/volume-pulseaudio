@@ -13,8 +13,8 @@ AUDIO_MUTED_SYMBOL='  '
 
 AUDIO_INTERVAL=5
 
-DEFAULT_COLOR="#ffffff"
-MUTED_COLOR="#a0a0a0"
+DEFAULT_COLOR="#657b83"
+MUTED_COLOR="#93a1a1"
 
 LONG_FORMAT=0
 SHORT_FORMAT=2
@@ -99,10 +99,10 @@ function print_format {
     PERCENT="%"
     [[ $USE_PERCENT == 0 ]] && PERCENT=""
     case "$1" in
-        1) echo "$SYMBOL$VOL$PERCENT [$NAME]" ;;
-        2) echo "$SYMBOL$VOL$PERCENT [$INDEX]";;
+        1) echo "$SYMBOL$VOL$PERCENT[$NAME]" ;;
+        2) echo "$SYMBOL$VOL$PERCENT[$INDEX]";;
         3) echo "$SYMBOL$VOL$PERCENT" ;;
-        *) echo "$SYMBOL$VOL$PERCENT [$INDEX:$NAME]" ;;
+        *) echo "$SYMBOL$VOL$PERCENT[$INDEX:$NAME]" ;;
     esac
 }
 
