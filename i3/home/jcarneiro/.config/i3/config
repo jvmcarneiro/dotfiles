@@ -23,6 +23,7 @@ exec_always --no-startup-id feh --bg-center "/home/jcarneiro/Pictures/orange-tre
 exec_always --no-startup-id dropbox
 exec_always --no-startup-id dunst
 exec_always --no-startup-id udiskie -t2
+exec_always --no-startup-id thermald
 
 # Toggle bar
 bindsym $mod+g exec i3-msg bar mode hide
