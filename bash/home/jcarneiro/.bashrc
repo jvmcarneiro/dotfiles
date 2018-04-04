@@ -23,20 +23,18 @@ alias fixscreen="xrandr -s 1 && xrandr -s 0"
 ## Hybrid suspend
 alias hybrid='sudo systemctl hybrid-sleep'
 ## Normal suspend
-alias hybrid='sudo systemctl hybrid-sleep'
+alias suspend='sudo systemctl suspend'
 ## Neomutt ease of use
 alias mutt='neomutt'
+## Terminal emacs
+alias emacst='emacsclient -t'
+## Visual client emacs
+alias emacsc='emacsclient -c'
 
 # Set prompt
 PS1='[\u@\h \W]\$ '
 ## Show number of inbox items in terminal prompt
 export PS1='[$(task +in +PENDING count)]'$PS1
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:/usr/local/rvm/bin"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # Quartus auto-configured this
 export QSYS_ROOTDIR="/home/jcarneiro/intelFPGA_lite/16.1/quartus/sopc_builder/bin"
