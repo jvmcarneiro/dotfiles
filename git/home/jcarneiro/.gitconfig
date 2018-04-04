@@ -1,7 +1,7 @@
 [alias]
 	hist = !vim -c ":GV"
 [core]
-	editor = vim
+	editor = "emacsclient -t"
 [color]
 	pager = false
 [credential]
