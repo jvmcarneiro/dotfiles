@@ -2,11 +2,9 @@
 data.location=~/.task
 
 # Contexts
-context.nape=+@ruby
-context.ufba=+@netbook or +@internet or +@paper or +@phone
-context.home=+@home or +@notebook or +@netbook or +@internet or +@paper
-context.street=+@phone
-context.travel=+@phone -@internet
+context.nape=+@nape
+context.ufba=+@ufba
+context.home=+@home
 
 # Inbox report
 report.in.columns     = id,description
@@ -35,14 +33,6 @@ uda.brainpower.values=H,M,L
 # Time estimate attribute
 uda.estimate.type=duration
 uda.estimate.label=Estimate
-
-# Inthe.AM server files
-taskd.certificate=~/.task/private.certificate.pem
-taskd.key=~/.task/private.key.pem
-taskd.ca=~/.task/ca.cert.pem
-taskd.server=taskwarrior.inthe.am:53589
-taskd.credentials=inthe_am/jvmcarneiro/f7111418-093c-4b37-9d89-6a4783bef8b3
-taskd.trust=ignore hostname
 
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
