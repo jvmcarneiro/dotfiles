@@ -1,4 +1,4 @@
---verbose=1
+--verbose=2
 --dir=/home/jcarneiro/dotfiles
 --target=/
 --ignore=.+~

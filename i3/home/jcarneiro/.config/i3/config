@@ -20,10 +20,8 @@ client.background #fdf6e3
 
 # Background
 exec_always --no-startup-id feh --bg-fill "/home/jcarneiro/Pictures/wallpaper.jpg"
-exec_always --no-startup-id dropbox
 exec_always --no-startup-id dunst
 exec_always --no-startup-id udiskie -t2
-exec_always --no-startup-id thermald
 
 # Toggle bar
 bindsym $mod+g exec i3-msg bar mode hide

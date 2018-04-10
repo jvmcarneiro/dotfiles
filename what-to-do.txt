@@ -1,9 +1,9 @@
 1. Install dependencies
 2. Stow everything (create folders as needed)
 3. Install use-package
-4.
+4. Move userChrome.css to [firefox-profile]/chrome/ folder
+5. Symlink session binaries to ~/.config/tdm/sessions
 
 note:
 search flycheck checkers
-upload firefox config
-upload tdm config
+search i3blocks dependencies
