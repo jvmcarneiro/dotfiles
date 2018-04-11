@@ -40,6 +40,7 @@ ttf-roboto
 ttf-roboto-mono
 ttf-roboto-slab
 ttf-vista-fonts
+udiskie
 vim
 vimpager
 w3m
