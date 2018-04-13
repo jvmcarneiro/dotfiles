@@ -31,6 +31,7 @@ rofi
 scrot
 stow
 termite
+texlive-most
 transmission-cli
 trash
 ttf-all-the-icons
@@ -46,3 +47,4 @@ vimpager
 w3m
 xclip
 xorg
+zathura-pdf-mupdf
