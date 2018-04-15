@@ -9,8 +9,8 @@ floating_modifier $mod
 font Roboto Mono 10
 
 # Border and titlebar
-new_window pixel 2
-new_float pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 smart_borders on
 client.focused #d33682 #d33682 #d33682 #d33682 #d33682
 client.focused_inactive #93a1a1 #93a1a1 #93a1a1 #93a1a1 #93a1a1
@@ -22,6 +22,7 @@ client.background #fdf6e3
 exec_always --no-startup-id feh --bg-fill "/home/jcarneiro/Pictures/wallpaper.jpg"
 exec_always --no-startup-id dunst
 exec_always --no-startup-id udiskie -t2
+exec_always --no-startup-id compton -b --shadow-exclude-reg 1920x20+0+0
 
 # Toggle bar
 bindsym $mod+g exec i3-msg bar mode hide
