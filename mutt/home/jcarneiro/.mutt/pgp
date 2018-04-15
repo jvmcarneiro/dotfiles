@@ -1,0 +1,6 @@
+#
+# PGP configuration for mutt
+#
+
+# Enable use of gpg-agent
+set pgp_use_gpg_agent = yes
