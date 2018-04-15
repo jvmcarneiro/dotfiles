@@ -1,5 +1,6 @@
-jedi
+autopep8
 flake8
 flake8-docstrings
 flake8-future
-autopep8
+jedi
+keyring

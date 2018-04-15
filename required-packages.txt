@@ -1,11 +1,14 @@
 acpi
 atool
 console-tdm
+compton
 dunst
 emacs
+eslint
 feh
 ffmpegthumbnailer
 firefox
+gnome-keyring
 gtk-theme-numix-solarized
 highlight
 i3-gaps
@@ -20,6 +23,7 @@ neomutt
 npm
 numix-gtk-theme
 odt2txt
+papirus-icon-theme
 poppler
 powerline-fonts
 powerline-console-fonts

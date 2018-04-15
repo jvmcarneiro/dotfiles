@@ -1,5 +1,7 @@
 #!/bin/bash
-# Copyright (C) 2014 Alexander Keller <github@nycroth.com>
+# This is a modified version of Alexander Keller's <github@nycroth.com>
+# wifi i3blocks blocklet with a more universal interface search and using
+# NetworkManager for quality and ssid definition.
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,13 +29,14 @@ INTERFACE=$(ip link | tr ' ' '\n' | tr ':' '\n' | grep wl)
 
 #------------------------------------------------------------------------
 
-
-QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+# Using nm instead of /proc/net/wireless, which is not present in my systems
+QUALITY=$(nmcli d wifi | egrep '[*]' | tr -s ' ' | cut -d ' ' -f7)
+SSID=$(nmcli d wifi | egrep '[*]' | tr -s ' ' | cut -d ' ' -f2)
 
 #------------------------------------------------------------------------
 
-echo $QUALITY $(iwgetid -r) # full text
-echo $QUALITY $(iwgetid -r) # short text
+echo "$QUALITY" "$SSID" # full text
+echo "$QUALITY" "$SSID" # short text
 
 # color
 if [[ $QUALITY -ge 80 ]]; then
