@@ -10,17 +10,17 @@
 
 # Aliases
 ## Launches pager defined above
-alias less="${PAGER}"
-alias zless="${PAGER}"
-alias cat="vimcat"
+alias less='${PAGER}'
+alias zless='${PAGER}'
+alias cat='vimcat'
 ## Adds colors to ls
-alias ls="ls --color=auto"
-## Sends a low-level hibernation call
-alias hibernate="echo disk | sudo tee /sys/power/state"
+alias ls='ls --color=auto'
 ## Creates a tag file in the current folder
-alias ctagsvim="ctags -R . --extras=+q --fields=+i -n"
+alias ctagsvim='ctags -R . --extras=+q --fields=+i -n'
 ## Fix Screen issues with bigger screens
-alias fixscreen="xrandr -s 1 && xrandr -s 0"
+alias fixscreen='xrandr -s 1 && xrandr -s 0'
+## Hibernation call
+alias hibernate='sudo systemctl hibernate'
 ## Hybrid suspend
 alias hybrid='sudo systemctl hybrid-sleep'
 ## Normal suspend

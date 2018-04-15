@@ -12,3 +12,4 @@ ExecStart=/home/jcarneiro/bin/lock
 [Install]
 WantedBy=sleep.target
 WantedBy=suspend.target
+WantedBy=hibernate.target

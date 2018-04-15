@@ -3,7 +3,6 @@
 3. Install use-package
 4. Move userChrome.css to [firefox-profile]/chrome/ folder
 5. Symlink session binaries to ~/.config/tdm/sessions
-
-note:
-search flycheck checkers
-search i3blocks dependencies
+6. Enable systemd services
+7. Copy gpg keys
+8. Run `/.email --add [email address]` i3blocks script for each account
