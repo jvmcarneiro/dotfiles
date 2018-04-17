@@ -6,6 +6,7 @@ cppcheck
 csslint
 dunst
 emacs
+elinks
 eslint
 feh
 ffmpegthumbnailer
@@ -23,6 +24,7 @@ mailcap
 mediainfo
 myrepos
 neomutt
+netpbm
 nodejs-jsonlint
 npm
 numix-gtk-theme
