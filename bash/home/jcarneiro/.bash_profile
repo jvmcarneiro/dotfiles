@@ -3,6 +3,7 @@
 #
 
 # if .bashrc exists, source it
+# shellcheck source=.bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # Global variables
