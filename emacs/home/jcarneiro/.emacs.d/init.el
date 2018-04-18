@@ -647,43 +647,6 @@
 (require 'reftex)
 (require 'tex)
 (require 'tex-buf)
-(defun LaTeX-save-and-compile ()
-  "Save and compile the tex project using latexmk.
-If compilation fails, split the current window and open error-buffer
-then jump to the error line, if errors corrected, close the error-buffer
-window and close the *TeX help* buffer."
-  (interactive)
-  (progn
-    ;; ;; turn off smartparens because LaTeX-electric-left-right-brace
-    ;; ;; offers more for specific LaTeX mode
-    ;; ;; Since SP is always triggered later by sth., put these two lines here
-    ;; (turn-off-smartparens-mode)
-    ;; (setq LaTeX-electric-left-right-brace t)
-    (let ((TeX-save-query nil)
-	  (TeX-process-asynchronous nil)
-	  (master-file (TeX-master-file)))
-      (TeX-save-document "")
-      ;; clean all generated files before compile
-      ;; DO NOT do it when up-to-date, remove this line in proper time
-      (TeX-clean t)
-      (TeX-run-TeX "latexmk"
-		   (TeX-command-expand
-		    "latexmk -pdflatex='pdflatex -file-line-error -synctex=1' -pdf %s"
-		    'TeX-master-file)
-		   master-file)
-      (if (plist-get TeX-error-report-switches (intern master-file))
-	  ;; avoid creating multiple windows to show the *TeX Help* error buffer
-	  (if (get-buffer-window (get-buffer "*TeX Help*"))
-	      (TeX-next-error)
-	    (progn
-	      (split-window-vertically -10)
-	      (TeX-next-error)))
-	;; if no errors, delete *TeX Help* window and buffer
-	(if (get-buffer "*TeX Help*")
-	    (progn
-	      (if (get-buffer-window (get-buffer "*TeX Help*"))
-		  (delete-windows-on "*TeX Help*"))
-	      (kill-buffer "*TeX Help*")))))))
 (add-hook 'LaTex-mode-hook
 	  (lambda ()
 	    (visual-line-mode)
@@ -691,11 +654,10 @@ window and close the *TeX help* buffer."
 	    (turn-on-reftex)
 	    (flyspell-mode)
 	    (flyspell-buffer)
-	    (TeX-fold-mode 1)
-	    ))
+	    (TeX-fold-mode 1)))
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
-(setq TeX-PDF-mode t)
+(setq TeX-global-PDF-mode t)
 (setq TeX-newline-function 'reindent-then-newline-and-indent)
 (setq reftex-plug-into-AUCTeX t)
 (setq LaTeX-item-indent 0)
@@ -730,21 +692,6 @@ window and close the *TeX help* buffer."
 (setq LaTeX-includegraphics-read-file 'LaTeX-includegraphics-read-file-relative
       LaTeX-includegraphics-strip-extension-flag nil)
 (add-to-list 'auto-mode-alist '("\\.tex$" . LaTeX-mode))
-(add-to-list 'TeX-command-list
-	     '("latexmk" "latexmk -pdflatex='pdflatex \
-                -file-line-error -synctex=1' -pdf %s"
-	       TeX-run-command nil t :help "Run latexmk") t)
-(setq TeX-command-default "latexmk")
-(bind-keys :map LaTeX-mode-map
-	   ;; default C-c C-e rebound and cannot be rebound
-	   ("C-c C-x e" . LaTeX-environment)
-	   ("C-c C-x s" . LaTeX-section)
-	   ("C-c C-x m" . TeX-insert-macro)
-	   ("C-x C-s" . LaTeX-save-and-compile)
-	   ;; default C-c. not working and replaced by org-time-stamp
-	   ("C-c m" . LaTeX-mark-environment)
-	   ;; ("<tab>" . TeX-complete-symbol)
-	   ("M-<return>" . LaTeX-insert-item))
 (TeX-global-PDF-mode t)
 
 (provide 'init)
