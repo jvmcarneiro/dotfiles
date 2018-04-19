@@ -650,49 +650,37 @@
 (add-hook 'LaTex-mode-hook
 	  (lambda ()
 	    (visual-line-mode)
-	    (LaTeX-math-mode)
 	    (turn-on-reftex)
+	    (turn-on-cdlatex)
 	    (flyspell-mode)
 	    (flyspell-buffer)
 	    (TeX-fold-mode 1)))
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq TeX-global-PDF-mode t)
-(setq TeX-newline-function 'reindent-then-newline-and-indent)
-(setq reftex-plug-into-AUCTeX t)
-(setq LaTeX-item-indent 0)
-(setq-default TeX-master 'shared)
 (defvar tex-tree-roots)
 (defvar ispell-program-name)
 (defvar ispell-dictionary)
 (defvar LaTeX-section-hook)
+(defvar reftex-plug-into-AUCTeX)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq TeX-PDF-mode t)
+(setq TeX-newline-function 'reindent-then-newline-and-indent)
+(setq reftex-plug-into-AUCTeX t)
+(setq LaTeX-item-indent 0)
+(setq LaTeX-command-section-level t)
+(setq TeX-clean-confirm nil)
 (setq tex-tree-roots t)
 (setq ispell-program-name "aspell")
 (setq ispell-dictionary "english")
-(setq LaTeX-section-hook
-      '(LaTeX-section-heading
-	LaTeX-section-title
-	LaTeX-section-toc
-	LaTeX-section-section
-	LaTeX-section-label
-	TeX-source-correlate-mode
-	server-force-delete))
-(push '("%(masterdir)" (lambda nil (file-truename (TeX-master-directory))))
-      TeX-expand-list)
-(push '("Zathura" "zathura --fork -s -x \"emacsclient --eval \
-                     '(progn (switch-to-buffer \
-                        (file-name-nondirectory \"'\"'\"%{input}\"'\"'\")) \
-                          (goto-line %{line}))'\"")
-      TeX-view-program-list)
-(push '(output-pdf "Zathura") TeX-view-program-selection)
-(setq LaTeX-command-section-level t)
-(setq TeX-clean-confirm nil)
-(setq TeX-source-correlate-method 'synctex
-      TeX-source-correlate-start-server t)
-(setq LaTeX-includegraphics-read-file 'LaTeX-includegraphics-read-file-relative
-      LaTeX-includegraphics-strip-extension-flag nil)
+(custom-set-variables
+ '(TeX-view-program-list (quote (("Zathura" "zathura %o"))))
+ '(TeX-view-program-selection
+  (quote
+   (((output-dvi style-pstricks) "dvips and gv")
+   (output-dvi "xdvi")
+   (output-pdf "Zathura")
+   (output-html "xdg-open")))))
 (add-to-list 'auto-mode-alist '("\\.tex$" . LaTeX-mode))
-(TeX-global-PDF-mode t)
+(define-key cdlatex-mode-map "\C-c?" nil)
 
 (provide 'init)
 ;;; init.el ends here

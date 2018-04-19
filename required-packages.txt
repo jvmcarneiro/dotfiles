@@ -46,6 +46,7 @@ shellcheck
 stow
 termite
 texlive-most
+texlive-most-doc
 tidy
 transmission-cli
 trash
