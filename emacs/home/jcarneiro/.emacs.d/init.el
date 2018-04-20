@@ -178,6 +178,7 @@
 (use-package elpy
   :ensure t
   :config
+  (setq elpy-modules (remove 'elpy-module-flymake elpy-modules))
   (elpy-enable))
 
 (use-package evil

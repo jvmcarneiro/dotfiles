@@ -1,5 +1,6 @@
 acpi
 atool
+autopep8
 console-tdm
 compton
 cppcheck
@@ -34,7 +35,9 @@ poppler
 powerline-fonts
 powerline-console-fonts
 pulsemixer
+python-jedi
 python-keyring
+python-rope
 qt5-styleplugins
 ranger
 reflector
@@ -64,4 +67,5 @@ vimpager
 w3m
 xclip
 xorg
+yapf
 zathura-pdf-mupdf
