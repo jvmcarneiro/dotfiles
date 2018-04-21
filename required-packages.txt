@@ -46,7 +46,7 @@ ttf-roboto-mono
 ttf-roboto-slab
 ttf-vista-fonts
 udiskie
-vim
+gvim
 vimpager
 w3m
 xclip
