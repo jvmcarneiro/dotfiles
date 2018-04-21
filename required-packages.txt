@@ -15,6 +15,7 @@ firefox
 flake8
 gnome-keyring
 gtk-theme-numix-solarized
+gvim
 highlight
 i3-gaps
 i3blocks-gaps-git
@@ -62,7 +63,6 @@ ttf-roboto-slab
 ttf-vista-fonts
 udiskie
 verilator
-vim
 vimpager
 w3m
 xclip
