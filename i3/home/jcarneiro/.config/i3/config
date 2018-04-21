@@ -23,6 +23,7 @@ exec_always --no-startup-id feh --bg-fill "/home/jcarneiro/Pictures/wallpaper.jp
 exec_always --no-startup-id dunst
 exec_always --no-startup-id udiskie -t2
 exec_always --no-startup-id compton -b --shadow-exclude-reg 1920x20+0+0
+exec_always --no-startup-id google-drive-ocamlfuse ~/drive/
 
 # Toggle bar
 bindsym $mod+g exec i3-msg bar mode hide
