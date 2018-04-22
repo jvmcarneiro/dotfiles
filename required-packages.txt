@@ -1,4 +1,5 @@
 acpi
+adobe-source-code-pro-fonts
 atool
 autopep8
 console-tdm
@@ -32,6 +33,7 @@ nodejs-jsonlint
 npm
 numix-gtk-theme
 odt2txt
+oh-my-zsh-git
 papirus-icon-theme
 poppler
 powerline-fonts
@@ -69,3 +71,5 @@ xclip
 xorg
 yapf
 zathura-pdf-mupdf
+zsh
+zsh-completions

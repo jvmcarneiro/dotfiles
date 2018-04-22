@@ -1,9 +1,10 @@
-1. Install dependencies
-2. Stow everything (create folders as needed)
-3. Install use-package
-4. Download st-8.1 and make clean install with changes applied
-5. Move userChrome.css to [firefox-profile]/chrome/ folder
-6. Symlink session binaries to ~/.config/tdm/sessions
-7. Enable systemd services
-8. Copy gpg keys
-9. Run `/.email --add [email address]` i3blocks script for each account
+1. Install aur helper
+2. Install dependencies list
+3. Stow everything (create folders as needed)
+4. Change shell to zsh
+5. Install use-package
+6. Move userChrome.css to [firefox-profile]/chrome/ folder
+7. Symlink session binaries to ~/.config/tdm/sessions
+8. Enable systemd services
+9. Copy gpg keys
+10. Run `/.email --add [email address]` i3blocks script for each account

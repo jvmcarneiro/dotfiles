@@ -1,4 +1,4 @@
-# Taskwarrior stuff
+# Taskwarrior shell commands
 
 ## Add to inbox
 alias in='task add +in'
@@ -42,4 +42,3 @@ delegate (){
     shift
     task $id modify -in +waiting annotate $@
 }
-
