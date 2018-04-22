@@ -37,7 +37,7 @@
   (server-start))
 
 ;; Set default font
-(set-frame-font "Roboto Mono-10")
+(set-frame-font "Source Code Pro-10")
 
 ;; Move customize interface to another file
 (setq custom-file "~/.emacs.d/custom.el")
