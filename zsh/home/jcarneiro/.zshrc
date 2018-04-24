@@ -33,9 +33,20 @@ alias emacst='emacsclient -t'
 ## Visual client emacs
 alias emacsc='emacsclient -c'
 
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt extendedglob nomatch notify
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/jcarneiro/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
 # Zsh config
-# Syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Load completion and prompt
 autoload -Uz compinit promptinit
 compinit
@@ -92,3 +103,5 @@ fi
 
 # Source ohmyzsh
 source $ZSH/oh-my-zsh.sh
+# Source syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
