@@ -15,6 +15,7 @@ ffmpegthumbnailer
 firefox
 flake8
 gnome-keyring
+google-drive-ocamlfuse
 gtk-theme-numix-solarized
 gvim
 highlight
@@ -73,3 +74,4 @@ yapf
 zathura-pdf-mupdf
 zsh
 zsh-completions
+zsh-syntax-highlighting

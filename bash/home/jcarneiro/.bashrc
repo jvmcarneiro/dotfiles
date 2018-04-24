@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # If .shell_task script is present, source it
-# shellcheck source=.shell_task
+# shellcheck source=/home/jcarneiro/.shell_task
 [[ -f ~/.shell_task ]] && . ~/.shell_task
 
 # Aliases
