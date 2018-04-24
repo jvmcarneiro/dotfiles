@@ -6,7 +6,7 @@ floating_modifier $mod
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font Source Code Pro 10
+font SourceCodePro 10
 
 # Border and titlebar
 default_border pixel 1
@@ -38,7 +38,7 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN
 bindsym Control+Mod1+Delete exec ~/.config/i3blocks/scripts/shutdown_menu
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -164,7 +164,7 @@ bindsym $mod+r mode "resize"
 bar {
   status_command i3blocks
   position top
-  font pango:Source Code Pro, FontAwesome 10
+  font pango:SourceCodePro, FontAwesome 10
   tray_output primary
   height 20
   colors{
