@@ -23,6 +23,7 @@ i3-gaps
 i3blocks-gaps-git
 i3lock
 kitty
+latex2e-help-texinfo
 libcaca
 linux_logo_archcustom
 mailcap
