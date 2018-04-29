@@ -12,8 +12,8 @@ font SourceCodePro 10
 default_border pixel 1
 default_floating_border pixel 1
 smart_borders on
-client.focused #d33682 #d33682 #d33682 #d33682 #d33682
-client.focused_inactive #93a1a1 #93a1a1 #93a1a1 #93a1a1 #93a1a1
+client.focused #fdf6e3 #fdf6e3 #fdf6e3 #fdf6e3 #fdf6e3
+client.focused_inactive #eee8d5 #eee8d5 #eee8d5 #eee8d5 #eee8d5
 client.unfocused #eee8d5 #eee8d5 #eee8d5 #eee8d5 #eee8d5
 client.urgent #cb4b16 #cb4b16 #cb4b16 #cb4b16 #cb4b16
 client.background #fdf6e3
