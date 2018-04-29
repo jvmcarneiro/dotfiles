@@ -33,12 +33,19 @@ someday () {
 reference (){
     id=$1
     shift
-    task $id modify -in +reference annotate $@
+    task $id modify -in +reference $@
+}
+
+## Task should go into the agenda
+agenda (){
+    id=$1
+    shift
+    task $id modify -in +agenda $@
 }
 
 ## Task should be delegated
 delegate (){
     id=$1
     shift
-    task $id modify -in +waiting annotate $@
+    task $id modify -in +waiting $@
 }

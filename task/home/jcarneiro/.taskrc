@@ -16,7 +16,14 @@ report.in.labels      = ID,Description
 report.reference.columns     = id,tags,description.combined
 report.reference.description = Reference
 report.reference.filter      = status:pending (+reference)
-report.reference.labels      = ID,Tag,Description
+report.reference.labels      = ID,Tags,Description
+
+# Agenda report
+report.agenda.columns     = id,scheduled,due,until,description.combined
+report.agenda.description = Agenda
+report.agenda.filter      = status:pending (+agenda)
+report.agenda.labels      = ID,S,Due,Until,Description
+report.agenda.sort        = due+,until+,scheduled+
 
 # Next report
 report.next.description = Most urgent tasks
