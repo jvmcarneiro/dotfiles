@@ -3,7 +3,7 @@
 #
 
 # Internet browser
-export BROWSER="firefox-nightly"
+export BROWSER="firefox"
 # Terminal editor
 export EDITOR="emacsclient -t"
 # Gui editor
