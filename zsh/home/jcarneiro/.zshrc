@@ -51,19 +51,11 @@ compinit
 autoload -Uz compinit promptinit
 compinit
 promptinit
-# Menu-like completion
-zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 # Auto rehash
 zstyle ':completion:*' rehash true
 # Subject prompt to expansion
 setopt PROMPT_SUBST
-# Good history search
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-[[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
-[[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
 
 # Oh-my-zsh installation path
 ZSH=/usr/share/oh-my-zsh
@@ -105,3 +97,16 @@ fi
 source $ZSH/oh-my-zsh.sh
 # Source syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# start typing + [Up-Arrow] - fuzzy find history forward
+if [[ "${terminfo[kcuu1]}" != "" ]]; then
+  autoload -U up-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+  bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+fi
+# start typing + [Down-Arrow] - fuzzy find history backward
+if [[ "${terminfo[kcud1]}" != "" ]]; then
+  autoload -U down-line-or-beginning-search
+  zle -N down-line-or-beginning-search
+  bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+fi
