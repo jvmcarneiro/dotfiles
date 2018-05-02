@@ -172,8 +172,80 @@
   (define-key tern-mode-keymap (kbd "M-.") nil)
   (define-key tern-mode-keymap (kbd "M-,") nil))
 
-(use-package dim
-  :ensure t)
+(use-package delight
+  :ensure t
+  :config
+  (dim-minor-names
+   '((superword-mode "" subword)
+     (subword-mode "" subword)
+     (hs-minor-mode "" hideshow)
+     (reftex-mode "(rT)" reftex)
+     (vc-parent-buffer vc-parent-buffer-name)
+     (global-whitespace-newline-mode "" whitespace)
+     (global-whitespace-mode "" whitespace)
+     (whitespace-newline-mode "" whitespace)
+     (whitespace-mode "" whitespace)
+     (rainbow-mode "(rm)" rainbow-mode)
+     (rainbow-delimiters-mode "" rainbow-delimiters)
+     (quickrun-autorun-mode "" quickrun)
+     (projectile-mode "" projectile)
+     (org-cdlatex-mode "(Otex)" org)
+     (orgstruct-mode "(Ostr)" org)
+     (outline-minor-mode "(OL)" outline)
+     (js2-refactor-mode "(JSr)" js2-refactor)
+     (multiple-cursors-mode "(mc)" multiple-cursors-core)
+     (js2-minor-mode "(JS)" js2-mode)
+     (js2-highlight-unused-variables-mode "(JSh)" js2-mode)
+     (sgml-electric-tag-pair-mode "(sgml)" sgml-mode)
+     (buffer-face-mode "" face-remap)
+     (text-scale-mode "" face-remap)
+     (flycheck-mode "(FC)" flycheck)
+     (magit-blame-mode "(Mb)" magit-blame)
+     (magit-file-mode "(Mf)" magit-files)
+     (magit-wip-before-change-mode "(Mwb)" magit-wip)
+     (magit-wip-after-apply-mode "(Mwa)" magit-wip)
+     (magit-wip-after-save-local-mode "(Mws)" magit-wip)
+     (smerge-mode "" smerge-mode)
+     (git-commit-mode "(gc)" git-commt)
+     (mml-mode "(mml)" mml)
+     (with-editor-mode "(we)" with-editor)
+     (undo-tree-visualizer-selection-mode "" undo-tree)
+     (undo-tree-mode "" undo-tree)
+     (reveal-mode "" reveal)
+     (flyspell-mode "(FS)" flyspell)
+     (ispell-minor-mode "(IS)" ispell)
+     (highlight-indentation-current-column-mode "" highlight-indentation)
+     (highlight-indentation-mode "" highlight-indentation)
+     (elpy-mode "(elpy)" elpy)
+     (ivy-mode "(ivy)" ivy)
+     (diff-minor-mode "(diff)" diff-mode)
+     (compilation-minor-mode "(compm)" compile)
+     (compilation-shell-minor-mode "(comps)" compile)
+     (compilation-in-progress "(comp)" tex-buf)
+     (tern-mode "(tern)" tern)
+     (yas-minor-mode "(yas)" yasnippet)
+     (TeX-interactive-mode "(tex)" tex)
+     (TeX-PDF-mode "" tex)
+     (xref-etags-mode "" xref)
+     (company-search-mode "(Csm)" company)
+     (company-mode "(Comp)" company)
+     (centered-cursor-mode "" centered-cursor-mode)
+     (cdlatex-mode "(cdL)" cdlatex)
+     (auto-indent-mode "" auto-indent-mode)
+     (override-global-mode "" bind-key)
+     (server-buffer-clients "" server)
+     (global-auto-revert-mode "" autorevert)
+     (auto-revert-tail-mode "" autorevert)
+     (auto-revert-mode "" autorevert)
+     (eldoc-mode "(eldoc)" eldoc)
+     (visible-mode "" simple)
+     (visual-line-mode "(vl)" simple)
+     (next-error-follow-minor-mode "" simple)
+     (abbrev-mode "" abbrev)
+     (overwrite-mode ")" simple)
+     (auto-fill-function "(af)" simple)
+     (defining-kbd-macro "")
+     (isearch-mode "(is)"))))
 
 (use-package elpy
   :ensure t
@@ -506,7 +578,7 @@
   :requires powerline
   :config
   (setq-default mode-line-format
-        '("%e"
+	'("%e"
           (:eval
 	   (let* ((active (powerline-selected-window-active))
                   (mode-line (if active 'mode-line 'mode-line-inactive))
@@ -519,37 +591,80 @@
                   (separator-right (intern (format "powerline-%s-%s"
                                      (setq powerline-current-separator 'nil)
                                      (cdr powerline-default-separator-dir))))
-                  (lhs (list (powerline-raw " " mode-line)
-			     (powerline-raw "%*" mode-line)
+                  (lhs (list (powerline-raw " " face0)
+			     (powerline-raw "%*" face0)
 			     (powerline-buffer-id
-			      `(mode-line-buffer-id, mode-line))
+			      `(mode-line-buffer-id, face0))
 			     (when (and (boundp 'which-func-mode)
 					which-func-mode)
-			       (powerline-raw which-func-format mode-line))
-			     (powerline-vc face0)
-			     (powerline-raw " " face0)
-			     (powerline-major-mode face2 'l)
-			     (powerline-process face2)
-			     (powerline-raw " " face2)))
-                  (rhs (list (powerline-raw global-mode-string face2 'r)
-			     (powerline-raw " " face2)
-                             (powerline-raw "%l:%c" face2)
-			     (powerline-raw " " face2)
-                             (funcall separator-right face2 face0)
+			       (powerline-raw which-func-format face0))
+			     (funcall separator-right face0 face1)
+			     (powerline-major-mode face1 'l)
+			     (powerline-process face1)
+			     (powerline-raw " " face1)))
+                  (rhs (list (powerline-raw global-mode-string face1 'r)
+			     (powerline-vc face1)
+			     (powerline-raw " " face1)
+                             (funcall separator-right face1 face0)
                              (powerline-raw " " face0)
-                             (powerline-raw "%9p" face0 'r)))
-		  (center (list (funcall separator-left face2 face1)
-				(powerline-minor-modes face1 'l)
-				(powerline-raw " " face1)
-				(funcall separator-right face1 face2))))
+                             (powerline-raw "%l:%c" face0 'r)
+                             (powerline-raw "   " face0)))
+		  (center (list (funcall separator-right face1 face2)
+				(powerline-minor-modes face2 'l)
+				(powerline-raw " " face2)
+				(funcall separator-right face2 face1))))
              (concat (powerline-render lhs)
 		     (if (> (window-width)
 			    (+ (powerline-width lhs)
 			       (powerline-width rhs)
 			       (powerline-width center)))
 		       (powerline-render center))
-                     (powerline-fill face1 (powerline-width rhs))
-                     (powerline-render rhs)))))))
+                     (powerline-fill face2 (powerline-width rhs))
+                     (powerline-render rhs))))))
+  (defun my-frame-behaviours-powerline (&optional frame)
+    "Make FRAME and/or terminal local change for powerline."
+    (with-selected-frame (or frame (selected-frame))
+      (when window-system
+	(set-face-attribute 'mode-line frame
+			    :foreground "#eee8d5"
+			    :background "#586e75")
+	(set-face-attribute 'mode-line-inactive frame
+			    :foreground "#eee8d5"
+			    :background "#93a1a1")
+	(set-face-attribute 'powerline-active1 frame
+			    :foreground "#eee8d5"
+			    :background "#586e75")
+	(set-face-attribute 'powerline-inactive1 frame
+			    :foreground "#fdf6e3"
+			    :background "#93a1a1")
+	(set-face-attribute 'powerline-active2 frame
+			    :foreground "#eee8d5"
+			    :background "#586e75")
+	(set-face-attribute 'powerline-inactive2 frame
+			    :foreground "#fdf6e3"
+			    :background "#657b83"))
+      (unless window-system
+	(set-face-attribute 'mode-line frame
+			    :foreground "white"
+			    :background "brightgreen")
+	(set-face-attribute 'mode-line-inactive frame
+			    :foreground "white"
+			    :background "brightcyan")
+	(set-face-attribute 'powerline-active1 frame
+			    :foreground "white"
+			    :background "brightgreen")
+	(set-face-attribute 'powerline-inactive1 frame
+			    :foreground "brightwhite"
+			    :background "brightcyan")
+	(set-face-attribute 'powerline-active2 frame
+			    :foreground "white"
+			    :background "brightgreen")
+	(set-face-attribute 'powerline-inactive2 frame
+			    :foreground "brightwhite"
+			    :background "brightcyan"))))
+  (declare-function my-frame-behaviours-powerline init.el)
+  (my-frame-behaviours-powerline)
+  (add-hook 'after-make-frame-functions 'my-frame-behaviours-powerline))
 
 (use-package projectile
   :ensure t
