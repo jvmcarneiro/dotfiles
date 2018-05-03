@@ -13,7 +13,6 @@
 ## Launches pager defined above
 alias less='${PAGER}'
 alias zless='${PAGER}'
-alias cat='vimcat'
 ## Adds colors to ls
 alias ls='ls --color=auto'
 ## Creates a tag file in the current folder
@@ -41,9 +40,6 @@ setopt extendedglob nomatch notify
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/jcarneiro/.zshrc'
-
-autoload -Uz compinit
-compinit
 # End of lines added by compinstall
 
 # Zsh config
@@ -65,8 +61,6 @@ ZSH_THEME="kolo"
 HYPHEN_INSENSITIVE="true"
 # Enable autocorrection
 ENABLE_CORRECTION="true"
-# Red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
 # Plugins to load
 plugins=(
     compleat
@@ -95,16 +89,13 @@ fi
 
 # Source ohmyzsh
 source $ZSH/oh-my-zsh.sh
-# Source syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# start typing + [Up-Arrow] - fuzzy find history forward
+# Up and down arrow fix for vi-mode
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
   autoload -U up-line-or-beginning-search
   zle -N up-line-or-beginning-search
   bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
 fi
-# start typing + [Down-Arrow] - fuzzy find history backward
 if [[ "${terminfo[kcud1]}" != "" ]]; then
   autoload -U down-line-or-beginning-search
   zle -N down-line-or-beginning-search

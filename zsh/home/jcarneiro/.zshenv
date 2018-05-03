@@ -13,11 +13,11 @@ export ALTERNATE_EDITOR=""
 # Sudo text editor
 export SUDO_EDITOR="emacs -nw"
 # Man-specific pager
-export MANPAGER="/usr/bin/vimpager"
+export MANPAGER="less"
 # Sets qt theme
 export QT_QPA_PLATFORMTHEME="gtk2"
 # Go-to for most text-displaying utilities
-export PAGER="/home/jcarneiro/.vim/plugged/vimpager/vimpager"
+export PAGER="less"
 # Default x keyboard layout
 export XKB_DEFAULT_LAYOUT="us"
 # Default x keyboard variant
@@ -34,7 +34,6 @@ export LD_PRELOAD="/usr/lib/libgtk3-nocsd.so.0"
 # Path configurations
 export PATH="$HOME/bin:/usr/local/bin:${PATH}"
 export PATH="${PATH}:/usr/lib/python3.6/site-packages/"
-export PATH="${PATH}:$HOME/.vim/plugged/vimpager/"
 export PATH="${PATH}:$HOME/intelFPGA_lite/16.1/quartus/bin/"
 
 # Increase history
