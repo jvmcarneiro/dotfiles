@@ -208,7 +208,7 @@
      (smerge-mode "" smerge-mode)
      (git-commit-mode "(gc)" git-commt)
      (mml-mode "(mml)" mml)
-     (with-editor-mode "(editor)" with-editor)
+     (with-editor-mode "(edit)" with-editor)
      (undo-tree-visualizer-selection-mode "" undo-tree)
      (undo-tree-mode "" undo-tree)
      (reveal-mode "" reveal)
