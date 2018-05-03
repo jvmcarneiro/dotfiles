@@ -199,7 +199,7 @@
      (sgml-electric-tag-pair-mode "(sgml)" sgml-mode)
      (buffer-face-mode "" face-remap)
      (text-scale-mode "" face-remap)
-     (flycheck-mode "(FC)" flycheck)
+     (flycheck-mode "(Fc)" flycheck)
      (magit-blame-mode "(Mb)" magit-blame)
      (magit-file-mode "(Mf)" magit-files)
      (magit-wip-before-change-mode "(Mwb)" magit-wip)
