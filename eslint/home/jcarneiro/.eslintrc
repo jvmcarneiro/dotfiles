@@ -162,6 +162,51 @@
             "grouping": true,
             "allowCall": true
         }],
+        "no-new-require": 2,
+        "no-path-concat": 2,
+        "no-process-env": 2,
+        "no-process-exit": 2,
+        "no-restricted-modules": [2, ""],
+        "no-sync": [2, { "allowAtRootLevel": false }],
+
+        "array-bracket-newline": [1, {
+            "multiline": true,
+            "minItems": false
+        }],
+        "array-bracket-spacing": [1, "never", {
+            "singleValue": false,
+            "objectsInArrays": true,
+            "arraysInArrays": false
+        }],
+        "array-element-newline": [1, "never", {
+            "multiline": true,
+            "minItems": null
+        }],
+        "block-spacing": [1, "always"],
+        "brace-style": [1, "1tbs", { "allowSingleLine": true }],
+        "camelcase": [1, { "properties": "always" }],
+        "capitalized-comments": [1, "always", {
+            "ignorePattern": [""],
+            "ignoredInlineComments": true,
+            "ignoredConsecutiveComments": true
+        }],
+        "comma-dangle": [1, {
+            "arrays": "never",
+            "objects": "never",
+            "imports": "never",
+            "exports": "never",
+            "functions": "never"
+        }],
+        "comma-spacing": [1, {
+            "before": false,
+            "after": true
+        }],
+        "comma-style": [1, "last"],
+        "computed-property-spacing": [1, "never"],
+        "consistent-this": [1, "that"],
+        "eol-last": [1, "always"],
+        "func-call-spacing": [1, "never"],
+        "func-name-matching": [1, "always", { "includeCommonJSModuleExports": true }],
 
 
 
@@ -177,18 +222,9 @@
 
 
 
-            "arrow-spacing": ["error", { "before": true, "after": true }],
+        "arrow-spacing": ["error", { "before": true, "after": true }],
     "block-spacing": ["error", "always"],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
-    "camelcase": ["error", { "properties": "never" }],
-    "comma-dangle": ["error", {
-      "arrays": "never",
-      "objects": "never",
-      "imports": "never",
-      "exports": "never",
-      "functions": "never"
-    }],
-    "comma-spacing": ["error", { "before": false, "after": true }],
     "comma-style": ["error", "last"],
     "constructor-super": "error",
     "curly": ["error", "multi-line"],
