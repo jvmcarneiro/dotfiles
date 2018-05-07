@@ -207,15 +207,57 @@
         "eol-last": [1, "always"],
         "func-call-spacing": [1, "never"],
         "func-name-matching": [1, "always", { "includeCommonJSModuleExports": true }],
-
-
-
-
-
-
-
-
-
+        "func-names": [1, "as-needed"],
+        "func-style": [1, "expression", { "allowArrowFunctions": true }],
+        "function-paren-newline": [1, "multiline"],
+        "id-blacklist": [2, "data", "err", "e", "cb", "callback"],
+        "id-length": [1, {
+            "min": 2,
+            "max": "Infinity",
+            "properties": "always",
+            "exceptions": ""
+        }],
+        "id-match": [1, "^[a-z]+([A-Z][a-z]+)*$", {
+            "properties": true,
+            "onlyDeclarations": true
+        }],
+        "implicit-arrow-linebreak": [1, "beside"],
+        "indent": ["error", 2, {
+            "SwitchCase": 1,
+            "VariableDeclarator": 1,
+            "outerIIFEBody": 1,
+            "MemberExpression": 1,
+            "FunctionDeclaration": { "parameters": 1, "body": 1 },
+            "FunctionExpression": { "parameters": 1, "body": 1 },
+            "CallExpression": { "arguments": 1 },
+            "ArrayExpression": 1,
+            "ObjectExpression": 1,
+            "ImportDeclaration": 1,
+            "flatTernaryExpressions": false,
+            "ignoreComments": false
+        }],
+        "jsx-quotes": [1, "prefer-double"],
+        "key-spacing": [1, {
+            "beforeColon": false,
+            "afterColon": true,
+            "mode": "strict"
+        }],
+        "keyword-spacing": [1, {
+            "before": true,
+            "after": true
+        }],
+        "line-comment-position": [1, "above"],
+        "linebreak-style": [1, "unix"],
+        "lines-around-comment": [1, {
+            "beforeBlockComment": false,
+            "afterBlockComment": true,
+            "beforeLineComment": true,
+            "afterLineComment": false
+        }],
+        "lines-between-class-members": [1, "always", {
+            "exceptAfterSingleLine": false
+        }],
+        "max-depth": [1, 4],
 
 
 
@@ -223,9 +265,9 @@
 
 
         "arrow-spacing": ["error", { "before": true, "after": true }],
-    "block-spacing": ["error", "always"],
+        "block-spacing": ["error", "always"],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
-    "comma-style": ["error", "last"],
+        "comma-style": ["error", "last"],
     "constructor-super": "error",
     "curly": ["error", "multi-line"],
     "dot-location": ["error", "property"],
@@ -243,7 +285,7 @@
       "FunctionExpression": { "parameters": 1, "body": 1 },
       "CallExpression": { "arguments": 1 },
       "ArrayExpression": 1,
-      "ObjectExpression": 1,
+        "ObjectExpression": 1,
       "ImportDeclaration": 1,
       "flatTernaryExpressions": false,
       "ignoreComments": false
