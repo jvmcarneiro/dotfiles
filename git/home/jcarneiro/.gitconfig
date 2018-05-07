@@ -2,6 +2,7 @@
 	hist = !vim -c ":GV"
 [core]
 	editor = "emacsclient -t"
+	autocrlf = input
 [color]
 	pager = false
 [credential]
