@@ -33,6 +33,9 @@ export LD_PRELOAD="/usr/lib/libgtk3-nocsd.so.0"
 # Local user install npm global packages
 export npm_config_prefix="~/.node_modules"
 
+# Allow oh-my-zsh themes to work correctly (according to arch wiki)
+setopt NO_GLOBAL_RCS
+
 # Path configurations
 export PATH="$HOME/.node_modules/bin:$PATH"
 export PATH="$HOME/bin:/usr/local/bin:${PATH}"
