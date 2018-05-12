@@ -251,6 +251,11 @@
   :ensure t
   :config
   (setq elpy-modules (remove 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook
+	    (lambda ()
+	      (setq indent-tabs-mode nil)
+	      (setq tab-width 4)
+	      (setq python-indent-offset 4)))
   (elpy-enable))
 
 (use-package evil
