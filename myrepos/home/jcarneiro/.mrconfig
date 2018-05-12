@@ -5,11 +5,5 @@ untrack = git rm -r --cached .
 [dotfiles]
 checkout = git clone 'https://github.com/jvmcarneiro/dotfiles' 'dotfiles'
 
-[.password-store]
-checkout = git clone 'https://github.com/jvmcarneiro/.password-store.git' '.password-store'
-
-[ufba]
-checkout = git clone 'https://github.com/jvmcarneiro/ufba.git' 'ufba'
-
-[koans]
-checkout = git clone 'https://github.com/jvmcarneiro/my-koans.git' 'koans'
+[nape-ufba]
+checkout = git clone 'https://github.com/jvmcarneiro/nape-ufba' 'nape-ufba'

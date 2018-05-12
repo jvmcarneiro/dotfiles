@@ -119,7 +119,7 @@ label=
 command=~/.config/i3blocks/scripts/wifi
 interval=5
 border=#2aa198
-min_width="XXXXXXXXXXXXX"
+min_width="XXXX"
 
 # Network interface monitoring
 #

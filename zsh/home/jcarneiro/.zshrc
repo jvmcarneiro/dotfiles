@@ -55,6 +55,8 @@ setopt PROMPT_SUBST
 
 # Oh-my-zsh installation path
 ZSH=/usr/share/oh-my-zsh
+# Oh-my-zsh custom folder
+ZSH_CUSTOM="$HOME/.oh-my-zsh/custom/"
 # Zsh theme
 ZSH_THEME="kolo"
 # Insensitive hyphen completion

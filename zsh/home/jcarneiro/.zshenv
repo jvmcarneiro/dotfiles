@@ -30,8 +30,14 @@ export LC_ALL="en_US.UTF-8"
 export GTK_CSD=0
 # Fixes other theming issues with gtk
 export LD_PRELOAD="/usr/lib/libgtk3-nocsd.so.0"
+# Local user install npm global packages
+export npm_config_prefix="~/.node_modules"
+
+# Allow oh-my-zsh themes to work correctly (according to arch wiki)
+setopt NO_GLOBAL_RCS
 
 # Path configurations
+export PATH="$HOME/.node_modules/bin:$PATH"
 export PATH="$HOME/bin:/usr/local/bin:${PATH}"
 export PATH="${PATH}:/usr/lib/python3.6/site-packages/"
 export PATH="${PATH}:$HOME/intelFPGA_lite/16.1/quartus/bin/"
