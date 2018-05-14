@@ -603,6 +603,7 @@
 			     (when (and (boundp 'which-func-mode)
 					which-func-mode)
 			       (powerline-raw which-func-format face0))
+			     (powerline-raw " " face0)
 			     (funcall separator-right face0 face1)
 			     (powerline-major-mode face1 'l)
 			     (powerline-process face1)
