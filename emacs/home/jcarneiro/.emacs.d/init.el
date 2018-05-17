@@ -172,7 +172,7 @@
   (define-key tern-mode-keymap (kbd "M-.") nil)
   (define-key tern-mode-keymap (kbd "M-,") nil))
 
-(use-package delight
+(use-package dim
   :ensure t
   :config
   (dim-minor-names
@@ -425,6 +425,7 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
   ;; better imenu
   (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
 
@@ -443,7 +444,7 @@
   (add-hook 'json-mode-hook
 	    (lambda ()
 	      (setq indent-tabs-mode nil)
-	      (setq json-mode-indent-level 4))))
+	      (setq json-mode-indent-level 2))))
 
 (use-package latex-pretty-symbols
   :ensure t)
@@ -490,6 +491,12 @@
 
 (use-package magit
   :ensure t)
+
+(use-package magit-gitflow
+  :ensure t
+  :config
+  (setq magit-gitflow-popup-key "C-f")
+  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
 
 (use-package markdown-mode
   :ensure t
