@@ -404,8 +404,16 @@
 (use-package fontawesome
   :ensure t)
 
-(use-package ivy
-  :ensure t)
+(use-package helm
+  :ensure t
+  :config
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (helm-mode 1))
+
+(use-package helm-dash
+  :ensure t
+  :config
+  (evil-leader/set-key-for-mode 'emacs-lisp-mode "H" 'helm-dash-at-point))
 
 (use-package js-comint
   :ensure t
