@@ -32,6 +32,7 @@ myrepos
 neomutt
 netpbm
 nodejs-jsonlint
+nodejs-tern
 npm
 numix-gtk-theme
 odt2txt

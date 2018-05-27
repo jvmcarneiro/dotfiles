@@ -8,3 +8,4 @@
 8. Enable systemd services
 9. Copy gpg keys
 10. Run `/.email --add [email address]` i3blocks script for each account
+11. Install Emacs_Lisp, JavaScript, NodeJS docsets with helm-dash

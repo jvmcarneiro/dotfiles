@@ -245,7 +245,8 @@
      (overwrite-mode ")" simple)
      (auto-fill-function "(af)" simple)
      (defining-kbd-macro "")
-     (isearch-mode "(is)"))))
+     (isearch-mode "(is)")
+     (helm-mode "(H)" helm-mode))))
 
 (use-package elpy
   :ensure t
@@ -413,7 +414,18 @@
 (use-package helm-dash
   :ensure t
   :config
-  (evil-leader/set-key-for-mode 'emacs-lisp-mode "H" 'helm-dash-at-point))
+  (global-set-key (kbd "C-c H") 'helm-dash-at-point)
+  (defvar helm-dash-docsets)
+  ;; javascript docsets
+  (defun js-doc ()
+    (interactive)
+    (setq-local helm-dash-docsets '("JavaScript" "NodeJS")))
+  (add-hook 'js2-mode-hook 'js-doc)
+  ;; emacs lisp docsets
+  (defun elisp-doc ()
+    (interactive)
+    (setq-local helm-dash-docsets '("Emacs_Lisp")))
+  (add-hook 'emacs-lisp-mode-hook 'elisp-doc))
 
 (use-package js-comint
   :ensure t
