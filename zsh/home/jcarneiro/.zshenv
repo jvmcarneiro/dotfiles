@@ -5,13 +5,13 @@
 # Internet browser
 export BROWSER="firefox"
 # Terminal editor
-export EDITOR="emacsclient -t"
+export EDITOR="nvim"
 # Gui editor
-export VISUAL="emacsclient -c -a emacs"
+export VISUAL="nvim"
 # Alternate editor
 export ALTERNATE_EDITOR=""
 # Sudo text editor
-export SUDO_EDITOR="emacs -nw"
+export SUDO_EDITOR="nvim"
 # Man-specific pager
 export MANPAGER="less"
 # Sets qt theme
@@ -37,8 +37,9 @@ export npm_config_prefix="~/.node_modules"
 setopt NO_GLOBAL_RCS
 
 # Path configurations
-export PATH="$HOME/.node_modules/bin:$PATH"
+export PATH="$HOME/.node_modules/bin:${PATH}"
 export PATH="$HOME/bin:/usr/local/bin:${PATH}"
+export PATH="/usr/lib/ccache/bin/:${PATH}"
 export PATH="${PATH}:/usr/lib/python3.6/site-packages/"
 export PATH="${PATH}:$HOME/intelFPGA_lite/16.1/quartus/bin/"
 

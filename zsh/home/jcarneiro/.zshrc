@@ -58,11 +58,9 @@ ZSH=/usr/share/oh-my-zsh
 # Oh-my-zsh custom folder
 ZSH_CUSTOM="$HOME/.oh-my-zsh/custom/"
 # Zsh theme
-ZSH_THEME="kolo"
+ZSH_THEME="flazz"
 # Insensitive hyphen completion
 HYPHEN_INSENSITIVE="true"
-# Enable autocorrection
-ENABLE_CORRECTION="true"
 # Plugins to load
 plugins=(
     compleat

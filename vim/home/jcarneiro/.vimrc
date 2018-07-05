@@ -213,16 +213,6 @@ nmap <C-t> :TagbarToggle<CR>
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 
-"" Activate spell check on some filetypes
-let g:lexical#spelllang = ['en_us','pt_br']
-augroup lexical
-  autocmd!
-  autocmd FileType markdown,mkd call lexical#init()
-  autocmd FileType textile call lexical#init()
-  autocmd FileType text call lexical#init()
-  autocmd FileType vimwiki call lexical#init()
-augroup END
-
 "" Markdown & pandoc configurations
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd FileType vimwiki set filetype=pandoc
@@ -317,8 +307,6 @@ Plug 'lervag/vimtex'
 Plug 'reedes/vim-colors-pencil'
 "" vim-gitgutter: show git diffs
 Plug 'airblade/vim-gitgutter'
-"" vim-lexical: spell-check and thesaurus
-Plug 'reedes/vim-lexical'
 "" vim-wheel: wheel moviment
 Plug 'reedes/vim-wheel'
 "" Colorizer: color visualizer

@@ -5,6 +5,5 @@
 # Source
 emulate sh -c 'source /etc/profile'
 
-# Global variables
-# Launch tdm at login
+# Start console display manager
 tdm

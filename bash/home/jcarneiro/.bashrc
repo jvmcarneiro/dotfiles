@@ -33,7 +33,7 @@ alias emacst='emacsclient -t'
 ## Visual client emacs
 alias emacsc='emacsclient -c'
 
-# Set prompt
+## Set prompt
 PS1='[\u@\h \W]\$ '
 ## Show number of inbox items in terminal prompt
 export PS1='[$(task +in +PENDING count)]'$PS1
