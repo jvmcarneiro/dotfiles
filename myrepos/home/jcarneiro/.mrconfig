@@ -1,9 +1,0 @@
-[DEFAULT]
-add = git add .
-untrack = git rm -r --cached .
-
-[dotfiles]
-checkout = git clone 'https://github.com/jvmcarneiro/dotfiles' 'dotfiles'
-
-[nape-ufba]
-checkout = git clone 'https://github.com/jvmcarneiro/nape-ufba' 'nape-ufba'

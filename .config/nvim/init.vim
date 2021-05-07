@@ -1,0 +1,213 @@
+" Specify a directory for plugins
+call plug#begin('~/.local/share/nvim/plugged')
+
+" Current color theme
+Plug 'arcticicestudio/nord-vim'
+" Color names and hex codes
+Plug 'chrisbra/Colorizer'
+" Tree folder navigation panel
+Plug 'scrooloose/nerdtree'
+" Nerdtree support for git flags
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" Fancy status line
+Plug 'itchyny/lightline.vim'
+" Indentation detection
+Plug 'tpope/vim-sleuth'
+" Bindings for surrounded stuff
+Plug 'tpope/vim-surround'
+" Extended repeat
+Plug 'tpope/vim-repeat'
+" Extra mappings
+Plug 'tpope/vim-unimpaired'
+" Git integration
+Plug 'tpope/vim-fugitive'
+" Universal syntax highlighting
+Plug 'sheerun/vim-polyglot'
+" Latex syntax and tools
+Plug 'lervag/vimtex'
+" Language server
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Snippet collection
+Plug 'honza/vim-snippets'
+" Lightline diagnostics integration
+Plug 'josa42/vim-lightline-coc'
+" C family semantic highlighting
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Initialize plugin system
+call plug#end()
+
+" Remember last cursor position
+augroup lastposition
+  autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' &&
+        \ line("'\"") > 1 && line("'\"") <= line("$") | 
+        \exe "normal! g`\"" | endif 
+augroup END
+
+" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set bomb
+set binary
+
+" Enables mouse support
+set mouse=a
+
+" Wrap navigation commands over lines
+set whichwrap+=<,>,h,l,[,]
+
+" Save undo history in persistent files
+set undofile
+
+" Open tree navigation
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Treat display lines as normal
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> 0 g0
+noremap <silent> $ g$
+
+" Simplify window navigation
+map <C-j> <c-w>j
+map <C-k> <c-w>k
+map <C-h> <c-w>h
+map <C-l> <c-w>l
+
+" Maps enter to clear search highlighting
+nnoremap <C-\> :noh<CR><CR>
+
+" Enables signal column (with numbers when available)
+if has('patch-8.1.1564')
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Set current theme
+syntax enable
+if has('termguicolors')
+  set termguicolors
+endif
+colorscheme nord
+
+" Latex configuration
+"augroup text_files
+"  au BufReadPost,BufNewFile *.md,*.txt,*.tex setlocal spell
+"augroup END
+set spelllang=pt_br,en_US
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_fold_enabled = 1
+
+" Quickfix windows adaptable size
+augroup quickfix_autocmds
+  autocmd!
+  autocmd BufReadPost quickfix call AdjustWindowHeight(2, 30)
+augroup END
+function! AdjustWindowHeight(minheight, maxheight)
+  execute max([a:minheight, min([line('$') + 1, a:maxheight])])
+        \ . 'wincmd _'
+endfunction
+
+" Backup config
+set noswapfile
+set directory^=~/.nvim/swap/
+set writebackup
+set nobackup
+set backupcopy=auto
+set backupdir^=~/.nvim/backup/
+
+" Terminal Config
+let g:term_buf = 0
+let g:term_win = 0
+function! TermToggle(height)
+    if win_gotoid(g:term_win)
+        hide
+    else
+        botright new
+        exec 'resize ' . a:height
+        try
+            exec 'buffer ' . g:term_buf
+        catch
+            call termopen($SHELL, {'detach': 0})
+            let g:term_buf = bufnr('')
+            set nonumber
+            set norelativenumber
+            set signcolumn=no
+        endtry
+        startinsert!
+        let g:term_win = win_getid()
+    endif
+endfunction
+nnoremap <C-t> :call TermToggle(12)<CR>
+inoremap <C-t> <Esc>:call TermToggle(12)<CR>
+tnoremap <C-t> <C-\><C-n>:call TermToggle(12)<CR>
+tnoremap <Esc> <C-\><C-n>
+tnoremap :q! <C-\><C-n>:q!<CR>
+
+" Lightline config
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+call lightline#coc#register()
+
+" Coc-nvim config from git page
+let g:coc_global_extensions = ['coc-tag', 'coc-syntax', 'coc-vimtex', 'coc-texlab', 'coc-spell-checker', 'coc-snippets', 'coc-python', 'coc-json', 'coc-dictionary', 'coc-diagnostic', 'coc-cspell-discts', 'coc-clangd']
+set hidden
+set updatetime=300
+set shortmess+=c
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+let g:coc_snippet_next = '<tab>'
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . ' ' . expand('<cword>')
+  endif
+endfunction
+augroup coc-highlight
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup end
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+augroup mygroup
+  autocmd!
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)

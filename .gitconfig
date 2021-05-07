@@ -1,0 +1,30 @@
+[alias]
+	hist = !vim -c ":GV"
+	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+	editor = "nvim"
+	autocrlf = input
+	excludesFile = ~/.gitignore
+[color]
+	pager = false
+[credential]
+	helper = store
+[merge]
+	tool = fugitive
+[mergetool]
+	prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "fugitive"]
+	cmd = nvim -f -c "Gdiff" "$LOCAL" "$REMOTE" "$MERGED"
+[diff]
+	tool = nvimdiff
+[difftool]
+	prompt = true
+[difftool "nvimdiff"]
+	cmd = "nvim -f \"$LOCAL\" \"$REMOTE\""
+[user]
+	email = jvmcarneiro@gmail.com
+	name = Joao Carneiro
+[init]
+	templatedir = ~/.git_template

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Only exported variables can be used within the timer's command.
+export PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
+
+# Run xidlehook
+xidlehook \
+  `# Don't lock when there's a fullscreen application` \
+  --not-when-fullscreen \
+  `# Don't lock when there's audio playing` \
+  --not-when-audio \
+  `# Blank screen after 10 seconds if it is locked` \
+  --timer 30 \
+    'pgrep i3lock > /dev/null && xset dpms force off' \
+    '' \
+  `# Dim the screen after 60 seconds, undim if user becomes active` \
+  --timer 180 \
+    'xrandr --output "$PRIMARY_DISPLAY" --brightness .6' \
+    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
+  `# Undim & lock after 10 more seconds` \
+  --timer 60 \
+    'xset dpms force off; xrandr --output "$PRIMARY_DISPLAY" --brightness 1; lock' \
+    '' 
+   # Finally, suspend two hours after it locks \
+   #--timer 7200 \
+   #  'systemctl suspend' \
+   #  ''
