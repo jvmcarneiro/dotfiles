@@ -435,7 +435,7 @@ clientkeys = gears.table.join(
     awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse sset Master toggle", false) end),
 
     -- Screenshot button
-    awful.key({ }, "Print", function () awful.util.spawn("ksnapshot") end,
+    awful.key({ }, "Print", function () awful.util.spawn("screengrab") end,
             {description = "Screen snapshot", group = "user"})
 
 )
@@ -539,10 +539,11 @@ awful.rules.rules = {
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
+          "screengrab",
           "Sxiv",
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-          "Wpa_gui",
           "veromix",
+          "Wpa_gui",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client

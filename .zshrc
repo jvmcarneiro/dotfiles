@@ -20,8 +20,6 @@ alias emacsc='emacsclient -c'
 alias less='/usr/share/nvim/runtime/macros/less.sh'
 # Always suspend then hibernate
 alias suspend='sudo systemctl suspend-then-hibernate'
-# Use eslint globally
-alias eslintg='eslint --config $HOME/.eslintrc.json'
 
 # Dots while waiting for completion 
 COMPLETION_WAITING_DOTS="true"
@@ -38,8 +36,6 @@ HYPHEN_INSENSITIVE="true"
 # Plugins to load
 plugins=(
     compleat
-    dircycle
-    dirpersist
     last-working-dir
     vi-mode
 )

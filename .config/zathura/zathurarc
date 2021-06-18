@@ -4,3 +4,6 @@ set guioptions none
 # Adding reverse search between neovim and zathura
 set synctex true
 set synctex-editor-command 'nvr -c "drop %1 | normal! %2G%3|"'
+
+# Enable clipboard
+set selection-clipboard clipboard

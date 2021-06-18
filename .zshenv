@@ -2,6 +2,8 @@
 # ~/.zshenv
 #
 
+# Default terminal
+export TERMINAL="alacritty"
 # Internet browser
 export BROWSER="firefox"
 # Terminal editor
@@ -14,14 +16,10 @@ export ALTERNATE_EDITOR=""
 export SUDO_EDITOR="nvim"
 # Man-specific pager
 export MANPAGER="less"
-# Sets qt theme
-export QT_QPA_PLATFORMTHEME="gtk2"
 # Go-to for most text-displaying utilities
 export PAGER="less"
 # Default x keyboard layout
 export XKB_DEFAULT_LAYOUT="us"
-# Default x keyboard variant
-export XKB_DEFAULT_VARIANT="altgr-intl"
 # Warn Java to not reparent wm
 export _JAVA_AWT_WM_NONREPARENTING=1
 # Fixes location bug
@@ -32,8 +30,8 @@ export GTK_CSD=0
 export npm_config_prefix="$HOME/.node_modules"
 # Support for go language
 export GOPATH="$HOME/gopath"
-# Qt an gtk theming
-export QT_STYLE_OVERRIDE="kvantum"
+# Python modules path
+export PYTHONPATH="$HOME/.local/lib/python3.7/site-packages:${PYTHONPATH}"
 
 # Allow oh-my-zsh themes to work correctly (according to arch wiki)
 setopt NO_GLOBAL_RCS

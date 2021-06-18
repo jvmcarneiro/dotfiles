@@ -8,8 +8,8 @@ xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 autorandr --change
 
-exec pasystray&
-exec nm-applet&
-exec xidlehook-default&
+exec pasystray &
+exec nm-applet &
+exec xidlehook-default &
 
-exec awesome
+exec startlxqt

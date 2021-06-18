@@ -25,20 +25,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 " Latex syntax and tools
 Plug 'lervag/vimtex'
+" Language server
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Snippet collection
 Plug 'honza/vim-snippets'
-" Snippet engine
-Plug 'SirVer/ultisnips'
-" Auto completion engine
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Python completion
-Plug 'deoplete-plugins/deoplete-jedi'
-" Syntax checker
-Plug 'dense-analysis/ale'
-" Checker indicators
-Plug 'maximbaz/lightline-ale'
-" Portuguese spell checking
-Plug 'mateusbraga/vim-spell-pt-br'
+" Lightline diagnostics integration
+Plug 'josa42/vim-lightline-coc'
+" C family semantic highlighting
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 " Initialize plugin system
 call plug#end()
 
@@ -94,32 +88,12 @@ if has('termguicolors')
 endif
 colorscheme nord
 
-" Completion config
-let g:deoplete#enable_at_startup = 1
-set completeopt-=preview
-call deoplete#custom#option('sources', {
-		\ '_': ['buffer', 'file', 'omni', 'ale'],
-		\})
-call deoplete#custom#source('_', 'smart_case', v:true)
-inoremap <silent><expr> <TAB>
-		\ pumvisible() ? "\<C-n>" :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-let g:UltiSnipsExpandTrigger = '<nop>'
-inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>" : "\<CR>"
-let g:UltiSnipsJumpForwardTrigger  = '<c-e>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-a>'
-
 " Latex configuration
-augroup text_files
-  au BufReadPost,BufNewFile *.md,*.txt,*.tex setlocal spell
-augroup END
-set spelllang=pt_br,en_us
-let g:tex_flavor='latex'
+"augroup text_files
+"  au BufReadPost,BufNewFile *.md,*.txt,*.tex setlocal spell
+"augroup END
+set spelllang=pt_br,en_US
+let g:tex_flavor = 'latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_fold_enabled = 1
 
@@ -176,9 +150,9 @@ let g:lightline = {
       \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
-      \              [ 'lineinfo' ],
+      \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
@@ -190,22 +164,52 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_infos': 'lightline#ale#infos',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-let g:lightline.component_type = {
-      \     'linter_checking': 'right',
-      \     'linter_infos': 'right',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'right',
-      \ }
-let g:lightline#ale#indicator_checking = "\uf110"
-let g:lightline#ale#indicator_infos = "\uf129"
-let g:lightline#ale#indicator_warnings = "\uf071"
-let g:lightline#ale#indicator_errors = "\uf05e"
-let g:lightline#ale#indicator_ok = "\uf00c"
+call lightline#coc#register()
+
+" Coc-nvim config from git page
+set hidden
+set updatetime=300
+set shortmess+=c
+let g:coc_global_extensions = ['coc-tag', 'coc-syntax', 'coc-vimtex', 'coc-spell-checker', 'coc-snippets', 'coc-pyright', 'coc-json', 'coc-dictionary', 'coc-diagnostic', 'coc-cspell-dicts', 'coc-clangd']
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+let g:coc_snippet_next = '<tab>'
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . ' ' . expand('<cword>')
+  endif
+endfunction
+augroup coc-highlight
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup end
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+augroup mygroup
+  autocmd!
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
