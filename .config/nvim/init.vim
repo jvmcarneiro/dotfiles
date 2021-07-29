@@ -2,7 +2,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Current color theme
-Plug 'arcticicestudio/nord-vim'
+Plug 'fneu/breezy'
 " Color names and hex codes
 Plug 'chrisbra/Colorizer'
 " Tree folder navigation panel
@@ -80,19 +80,14 @@ map <C-l> <c-w>l
 " Maps enter to clear search highlighting
 nnoremap <C-\> :noh<CR><CR>
 
-" Enables signal column (with numbers when available)
-if has('patch-8.1.1564')
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
 " Set current theme
 syntax enable
+set background=light
 if has('termguicolors')
   set termguicolors
 endif
-colorscheme nord
+colorscheme breezy
+let python_highlight_all=1
 
 " Completion config
 let g:deoplete#enable_at_startup = 1
@@ -173,7 +168,7 @@ tnoremap :q! <C-\><C-n>:q!<CR>
 
 " Lightline config
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'breezy',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
