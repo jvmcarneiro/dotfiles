@@ -52,9 +52,6 @@ export PATH="/usr/local/go/bin:${PATH}"
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 
-# Quartus added this
-export QSYS_ROOTDIR="/home/jcarneiro/intelFPGA_lite/16.1/quartus/sopc_builder/bin"
-
 # Tty colors
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P03B4252" #black
@@ -75,6 +72,3 @@ if [ "$TERM" = "linux" ]; then
     echo -en "\e]PFE5E9F0" #white
     clear #for background artifacting
 fi
-
-if [ -e /home/jcarneiro/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jcarneiro/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-source "$HOME/.cargo/env"

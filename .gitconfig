@@ -7,8 +7,6 @@
 	excludesFile = ~/.gitignore
 [color]
 	pager = false
-[credential]
-	helper = store
 [merge]
 	tool = fugitive
 [mergetool]
@@ -28,3 +26,5 @@
 	name = Joao Carneiro
 [init]
 	templatedir = ~/.git_template
+[credential]
+	helper = store
