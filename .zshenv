@@ -15,9 +15,9 @@ export ALTERNATE_EDITOR=""
 # Sudo text editor
 export SUDO_EDITOR="nvim"
 # Man-specific pager
-export MANPAGER="less"
+export MANPAGER="nvim -c 'set ft=man' -"
 # Go-to for most text-displaying utilities
-export PAGER="less"
+export PAGER="nvim -R"
 # Default x keyboard layout
 export XKB_DEFAULT_LAYOUT="us"
 # Warn Java to not reparent wm

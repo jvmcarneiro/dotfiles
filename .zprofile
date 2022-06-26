@@ -8,4 +8,4 @@
 # Default permissions
 umask 022
 
-
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
