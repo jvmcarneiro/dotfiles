@@ -18,14 +18,20 @@ require("telescope").setup({
                 file_ignore_patterns = { "^/usr/", "/%.cache/", "/%.cargo/", "/%.local/" },
             },
         },
+        lsp_handlers = {
+            code_action = {
+                telescope = require("telescope.themes").get_dropdown({}),
+            },
+        },
     },
 })
 
 require("telescope").load_extension("frecency")
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("lsp_handlers")
 require("telescope").load_extension("neoclip")
 require("telescope").load_extension("repo")
 
-vim.api.nvim_create_user_command("T", "Telescope", { nargs = "*" })
+vim.cmd("cnoreabbrev T Telescope")
 
 vim.g["rooter_cd_cmd"] = "lcd"

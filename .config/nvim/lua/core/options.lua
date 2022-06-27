@@ -18,6 +18,13 @@ set.whichwrap:append({
     ["l"] = true,
 })
 
+-- Show unwanted blank space characters
+set.listchars:append({
+    tab = ">-|",
+    trail = "•",
+    nbsp = "•",
+})
+
 -- Backup config
 set.undofile = true
 set.undodir = vim.fn.stdpath("config") .. "/.undo"

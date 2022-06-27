@@ -63,7 +63,12 @@ local function button(sc, txt, keybind)
         hl_shortcut = "Keyword",
     }
     local function on_press()
-        local key = vim.api.nvim_replace_termcodes(sc .. "<Ignore>", true, false, true)
+        local key = vim.api.nvim_replace_termcodes(
+            sc .. "<Ignore>",
+            true,
+            false,
+            true
+        )
         vim.api.nvim_feedkeys(key, "t", false)
     end
     return {
@@ -77,42 +82,37 @@ end
 -- Set buttons
 dashboard.section.buttons.val = {
     button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-    button("r", "  Frecent", ":Telescope frecency<CR>"),
+    button("r", "  Recent", ":Telescope oldfiles<CR>"),
     button("t", "  Last session", ":RestoreSession<CR><CR>"),
-    button("f", "  Find file", ":cd $HOME | Telescope find_files<CR>"),
+    button("f", "  Find file", ":cd $HOME | Telescope frecency<CR>"),
     button("p", "  Projects", ":Telescope repo cached_list<CR>"),
-    button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
+    button(
+        "s",
+        "  Settings",
+        ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"
+    ),
 }
 dashboard.section.buttons.opts = { spacing = 1 }
 
--- Auto get plugin load time
-local group = vim.api.nvim_create_augroup("AlphaProfiling", { clear = true })
-vim.api.nvim_create_autocmd("VimEnter", {
-    pattern = "*",
-    callback = function()
-        local total_path = vim.fn.stdpath("config") .. "/.plugin/profiling_total.out"
-        local total_file = assert(io.open(total_path, "w"))
-        vim.api.nvim_exec("PackerCompile profile=true", false)
-        vim.api.nvim_exec("doautocmd User PackerCompileDone", false)
-        local prof_string = vim.inspect(_G._packer.profile_output)
-        local total_time = 0.0
-        for match in string.gmatch(prof_string, "%d+%.%d+[^(ms)]") do
-            total_time = total_time + tonumber(match)
-        end
-        total_file:write(string.format("%.4f", total_time))
-        total_file:close()
-    end,
-    group = group,
-})
-
 -- Set footer
 local function footer()
-    local plugin_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath("data") .. "/site/pack/packer/start", "*", 0, 1))
+    local plugin_count = vim.fn.len(
+        vim.fn.globpath(
+            vim.fn.stdpath("data") .. "/site/pack/packer/start",
+            "*",
+            0,
+            1
+        )
+    )
     local prof_path = vim.fn.stdpath("config") .. "/.plugin/profiling_total.out"
     local prof_file = assert(io.open(prof_path, "r"))
     local load_time = prof_file:read("*n")
     prof_file:close()
-    return string.format("%d plugins loaded in %.4f ms", plugin_count, load_time)
+    return string.format(
+        "%d plugins loaded in %.3f ms",
+        plugin_count,
+        load_time
+    )
 end
 dashboard.section.footer.val = footer()
 dashboard.section.footer.opts = {

@@ -17,8 +17,24 @@ local group = vim.api.nvim_create_augroup("PackerGroup", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "packer_init.lua",
     callback = function()
+        SaveProfiling = function()
+            local total_path = vim.fn.stdpath("config")
+                .. "/.plugin/profiling_total.out"
+            local total_file = assert(io.open(total_path, "w"))
+            local prof_string = vim.inspect(_G._packer.profile_output)
+            local total_time = 0.0
+            for match in string.gmatch(prof_string, "%d+%.%d+[^(ms)]") do
+                total_time = total_time + tonumber(match)
+            end
+            total_file:write(string.format("%.3f", total_time))
+            total_file:close()
+        end
         vim.api.nvim_exec("source <afile>", false)
         vim.api.nvim_exec("PackerCompile profile=true", false)
+        vim.api.nvim_exec(
+            "autocmd User PackerCompileDone lua SaveProfiling()",
+            false
+        )
     end,
     group = group,
 })
@@ -56,13 +72,27 @@ return require("packer").startup({
 
         -- nvim-cmp: completion
         use({
-            "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-nvim-lsp",
             "saadparwaiz1/cmp_luasnip",
             "L3MON4D3/luasnip",
             "rafamadriz/friendly-snippets",
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lsp-document-symbol",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "dmitmel/cmp-cmdline-history",
+            "lukas-reineke/cmp-rg",
+            "quangnguyen30192/cmp-nvim-tags",
+        })
+
+        -- cmp-fuzzy: nvim-cmp fzf extensions
+        use({
+            "tzachar/fuzzy.nvim",
+            "tzachar/cmp-fuzzy-buffer",
+            "tzachar/cmp-fuzzy-path",
+            requires = {
+                "hrsh7th/nvim-cmp",
+                "nvim-telescope/telescope-fzf-native.nvim",
+            },
         })
 
         -- telescope: multi-use fuzzy finder
@@ -96,6 +126,9 @@ return require("packer").startup({
                 "airblade/vim-rooter",
             },
         })
+
+        -- telescope-lsp-handlers: telescope extension to handle lsp commands
+        use({ "gbrlsnchs/telescope-lsp-handlers.nvim" })
 
         -- neoclip: clipboard telescope extension
         use({
@@ -164,11 +197,8 @@ return require("packer").startup({
             requires = "github-nvim-theme",
         })
 
-        -- sniprun: quick REPL support
-        use({
-            "michaelb/sniprun",
-            run = "bash ./install.sh",
-        })
+        -- vim-slime: run text to repl
+        use({ "jpalardy/vim-slime" })
 
         -- nvim-lastplace: remember last cursor position
         use({ "ethanholz/nvim-lastplace" })
@@ -188,7 +218,8 @@ return require("packer").startup({
     end,
 
     config = {
-        compile_path = vim.fn.stdpath("config") .. "/.plugin/packer_compiled.lua",
+        compile_path = vim.fn.stdpath("config")
+            .. "/.plugin/packer_compiled.lua",
         log = { level = "trace" },
         profile = {
             enable = true,

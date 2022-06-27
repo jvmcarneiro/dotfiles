@@ -32,6 +32,11 @@ export npm_config_prefix="$HOME/.node_modules"
 export GOPATH="$HOME/gopath"
 # Python modules path
 export PYTHONPATH="$HOME/.local/lib/python3.7/site-packages:${PYTHONPATH}"
+# Fzf default commands aaa
+export FZF_DEFAULT_OPTS='--height 40% --border'
+export FZF_DEFAULT_COMMAND='fd . -H -E .git -E tmp -E .undo -E backup -E "*~"'
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Allow oh-my-zsh themes to work correctly (according to arch wiki)
 setopt NO_GLOBAL_RCS
