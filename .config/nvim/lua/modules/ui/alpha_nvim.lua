@@ -8,21 +8,6 @@ vim.cmd([[
     autocmd FileType alpha setlocal nofoldenable
 ]])
 
--- Get nvim version
-local version = vim.api.nvim_exec(
-    [[
-    function! GetNVimVersion()
-        redir => s
-        silent! version
-        redir END
-        return s
-    endfunction
-    call GetNVimVersion()
-    ]],
-    true
-)
-local nvim_version = string.match(version, "NVIM [^%s]+")
-
 -- Set header
 dashboard.section.header.val = {
     [[      .            .      ]],
@@ -40,13 +25,10 @@ dashboard.section.header.val = {
     [[  .cool         'ccoooc.  ]],
     [[    .co          .:o:.    ]],
     [[      .           .'      ]],
-    [[]],
-    [[]],
-    nvim_version,
 }
 dashboard.section.header.opts = {
     position = "center",
-    hl = "SpecialKey",
+    hl = "StatusLineNC",
 }
 
 -- Custom button function
@@ -59,7 +41,7 @@ local function button(sc, txt, keybind)
         cursor = 5,
         width = 45,
         align_shortcut = "right",
-        hl = "SpecialKey",
+        hl = "FloatBorder",
         hl_shortcut = "Keyword",
     }
     local function on_press()
@@ -81,52 +63,41 @@ end
 
 -- Set buttons
 dashboard.section.buttons.val = {
-    button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-    button("r", "  Recent", ":Telescope oldfiles<CR>"),
-    button("t", "  Last session", ":RestoreSession<CR><CR>"),
-    button("f", "  Find file", ":cd $HOME | Telescope frecency<CR>"),
-    button("p", "  Projects", ":Telescope repo cached_list<CR>"),
-    button(
-        "s",
-        "  Settings",
-        ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"
-    ),
+    button("e", "  New file", "<Cmd>ene <Bar> startinsert <CR>"),
+    button("r", "  Recent", "<Cmd>Telescope oldfiles<CR>"),
+    button("f", "  Find file", "<Cmd>cd $HOME <Bar> Telescope frecency<CR>"),
+    button("t", "  Last session", "<Cmd>RestoreSession<CR><CR>"),
+    button("p", "  Projects", "<Cmd>Telescope repo cached_list<CR>"),
+    button("q", "  Quit", "<cmd>qa<CR>"),
 }
 dashboard.section.buttons.opts = { spacing = 1 }
 
+-- Get nvim version
+local version = vim.api.nvim_exec(
+    [[
+    function! GetNVimVersion()
+        redir => s
+        silent! version
+        redir END
+        return s
+    endfunction
+    call GetNVimVersion()
+    ]],
+    true
+)
+local nvim_version = string.match(version, "NVIM [^%s]+")
+
 -- Set footer
-local function footer()
-    local plugin_count = vim.fn.len(
-        vim.fn.globpath(
-            vim.fn.stdpath("data") .. "/site/pack/packer/start",
-            "*",
-            0,
-            1
-        )
-    )
-    local prof_path = vim.fn.stdpath("config") .. "/.plugin/profiling_total.out"
-    local prof_file = assert(io.open(prof_path, "r"))
-    local load_time = prof_file:read("*n")
-    prof_file:close()
-    return string.format(
-        "%d plugins loaded in %.3f ms",
-        plugin_count,
-        load_time
-    )
-end
-dashboard.section.footer.val = footer()
-dashboard.section.footer.opts = {
-    position = "center",
-    hl = "SpecialKey",
-}
+dashboard.section.footer.val = nvim_version
+dashboard.section.footer.opts.hl = "StatusLineNC"
 
 -- Set configs
 dashboard.config.layout = {
     { type = "padding", val = 1 },
     dashboard.section.header,
-    { type = "padding", val = 1 },
+    { type = "padding", val = 2 },
     dashboard.section.buttons,
-    { type = "padding", val = 0 },
+    { type = "padding", val = 1 },
     dashboard.section.footer,
 }
 
